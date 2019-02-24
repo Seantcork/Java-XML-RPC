@@ -5,7 +5,7 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
 /**
  * A simple example XML-RPC server program.
  */
-public class Server { 
+public class front { 
 
   public Integer[] sumAndDifference(int x, int y) {
     System.out.println("calling sumAndDifference(" + x + ", " + y + ")");
@@ -24,7 +24,7 @@ public class Server {
       XmlRpcServer xmlRpcServer;
       WebServer server = new WebServer(8888);
       xmlRpcServer = server.getXmlRpcServer();
-      phm.addHandler("Sample", Server.class);
+      phm.addHandler("Sample", server.class);
       xmlRpcServer.setHandlerMapping(phm);
       server.start();
       System.out.println("front server started");

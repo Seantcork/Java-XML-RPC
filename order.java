@@ -3,7 +3,7 @@ import org.apache.xmlrpc.server.XmlRpcServer;
 import org.apache.xmlrpc.server.PropertyHandlerMapping;
 
 
-public class orderServer{
+public class orderx{
 
 public Integer[] sumAndDifference(int x, int y) {
     System.out.println("calling sumAndDifference(" + x + ", " + y + ")");
