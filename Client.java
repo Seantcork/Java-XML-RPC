@@ -20,6 +20,7 @@ public class Client {
 
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
+    
     try {
       config.setServerURL(new URL("http://" + hostname + ":8888"));
       client = new XmlRpcClient();

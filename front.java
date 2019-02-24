@@ -27,7 +27,7 @@ public class Server {
       phm.addHandler("Sample", Server.class);
       xmlRpcServer.setHandlerMapping(phm);
       server.start();
-      System.out.println("XML-RPC server started");
+      System.out.println("front server started");
     } catch (Exception e) {
       System.err.println("Server exception: " + e);
     }

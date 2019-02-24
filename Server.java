@@ -15,8 +15,11 @@ public class Server {
     return array;
   }
 
+
   public static void main(String[] args) {
     try {
+      int x = 1;
+      System.out.println(x);
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
       WebServer server = new WebServer(8888);
