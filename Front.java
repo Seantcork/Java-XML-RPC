@@ -22,7 +22,7 @@ public class Front {
       System.out.println(x);
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
-      WebServer server = new WebServer(8888);
+      WebServer server = new WebServer(8880);
       xmlRpcServer = server.getXmlRpcServer();
       phm.addHandler("Sample", Front.class);
       xmlRpcServer.setHandlerMapping(phm);
