@@ -16,7 +16,7 @@ public class Catalog{
 
 	public Book getAllTopics(String topic){
 		ArrayList<Book> books = new ArrayList<Book>();
-		for(Book x: Booklist.getValues()){
+		for(Book x: Booklist.values()){
 			if(x.topic.equals(topic) == 0)
 				books.add(x);
 		}
@@ -24,7 +24,7 @@ public class Catalog{
 	}
 
 	public Book getBook(int item_num){
-		Book book = Booklist.values(item_num);
+		Book book = Booklist.get(item_num);
 		if(book == Null){
 			System.out.println("item doesnt exist");
 			return;
