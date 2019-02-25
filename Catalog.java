@@ -7,7 +7,7 @@ import java.util.*;
 public class Catalog{
 
 
-	SortedMap<Integer, Book> Booklist = new SortedMap<Integer, Book>();
+	HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
 
 
 
