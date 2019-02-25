@@ -11,6 +11,7 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
  * A simple example XML-RPC server program.
  */
 public class Front { 
+  Object[] result;
 
   public Integer[] sumAndDifference(int x, int y) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
@@ -30,7 +31,7 @@ public class Front {
     params.add(y);
 
     try {
-      Object[] result = (Object[]) client.execute("Order.sumAndDifference", params);
+      result = (Object[]) client.execute("Order.sumAndDifference", params);
       System.out.println("Sum is " + result[0]);
       System.out.println("Difference is " + result[1]);
     } catch (Exception e) {
