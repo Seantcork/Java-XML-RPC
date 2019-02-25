@@ -17,14 +17,14 @@ public class Catalog{
 	public Book getAllTopics(String topic){
 		ArrayList<Book> books = new ArrayList<Book>();
 		for(Book x: Booklist.getValues()){
-			if(x.topic.equal(topic) == 0)
+			if(x.topic.equals(topic) == 0)
 				books.add(x);
 		}
 		return books;
 	}
 
 	public Book getBook(int item_num){
-		Book book = Booklist.get(item_num);
+		Book book = Booklist.values(item_num);
 		if(book == Null){
 			System.out.println("item doesnt exist");
 			return;

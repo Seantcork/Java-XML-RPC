@@ -1,6 +1,7 @@
-public static final restock_val = 10;
+
 
 class Book {
+	public static final int restock_val = 10;
 	String title;
 	String topic;
 	String author;
