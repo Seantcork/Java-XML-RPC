@@ -13,7 +13,7 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
 public class Front { 
   Object[] result;
 
-  public Integer[] sumAndDifference(int x, int y) {
+  public Object[] sumAndDifference(int x, int y) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
     
