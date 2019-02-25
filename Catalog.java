@@ -12,15 +12,6 @@ public class Catalog{
 
 
 
-	public void handleQuerry(Object[] args){
-		if(args){
-			getAllTopics(args[0].toString());
-		}
-		else{
-			int item_num = Integer.parseInt(args[0]);
-			getBook(item_num);
-		}
-	}
 
 
 	public Book getAllTopics(String topic){
