@@ -22,7 +22,7 @@ public class Client {
     XmlRpcClient client = null;
     
     try {
-      config.setServerURL(new URL("http://" + hostname + ":8888"));
+      config.setServerURL(new URL("http://" + hostname + ":8124"));
       client = new XmlRpcClient();
       client.setConfig(config);
     } catch (Exception e) {

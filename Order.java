@@ -22,7 +22,7 @@ public static void main(String[] args) {
       System.out.println(x);
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
-      WebServer server = new WebServer(8880);
+      WebServer server = new WebServer(8123);
       xmlRpcServer = server.getXmlRpcServer();
       phm.addHandler("Order", Order.class);
       xmlRpcServer.setHandlerMapping(phm);

@@ -18,7 +18,7 @@ public class Front {
     XmlRpcClient client = null;
     
     try {
-      config.setServerURL(new URL("http://localhost:8880"));
+      config.setServerURL(new URL("http://localhost:8123"));
       client = new XmlRpcClient();
       client.setConfig(config);
     } catch (Exception e) {
@@ -47,7 +47,7 @@ public class Front {
     try {
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
-      WebServer server = new WebServer(8888);
+      WebServer server = new WebServer(8124);
       xmlRpcServer = server.getXmlRpcServer();
       phm.addHandler("Sample", Front.class);
       xmlRpcServer.setHandlerMapping(phm);
