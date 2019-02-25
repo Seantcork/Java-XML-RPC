@@ -8,21 +8,40 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
 public class Front { 
 
   public Integer[] sumAndDifference(int x, int y) {
-    System.out.println("calling sumAndDifference(" + x + ", " + y + ")");
-    Integer[] array = new Integer[2];
-    array[0] = x + y;
-    array[1] = x - y;
-    return array;
+    XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
+    XmlRpcClient client = null;
+    
+    try {
+      config.setServerURL(new URL("http://localhost:8880"));
+      client = new XmlRpcClient();
+      client.setConfig(config);
+    } catch (Exception e) {
+      System.err.println("Client exception: " + e);
+    }
+
+
+    List<Integer> params = new ArrayList<Integer>();
+    params.add(x);
+    params.add(y);
+
+    try {
+      Object[] result = (Object[]) client.execute("Order.sumAndDifference", params);
+      System.out.println("Sum is " + result[0]);
+      System.out.println("Difference is " + result[1]);
+    } catch (Exception e) {
+      System.err.println("Client exception: " + e);
+    }
+
+    return result;
+    
   }
 
 
   public static void main(String[] args) {
     try {
-      int x = 1;
-      System.out.println(x);
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
-      WebServer server = new WebServer(8880);
+      WebServer server = new WebServer(8888);
       xmlRpcServer = server.getXmlRpcServer();
       phm.addHandler("Sample", Front.class);
       xmlRpcServer.setHandlerMapping(phm);
