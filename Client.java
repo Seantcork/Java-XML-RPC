@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.net.URL;     
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+import java.util.Scanner;
 
 /**
  * A simple example XML-RPC client program.
@@ -10,13 +11,11 @@ import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 public class Client {
 
   public static void main(String[] args) {
-    if (args.length != 3) {
-      System.out.println("Usage: [server] [x] [y]");
+    if (args.length != 1) {
+      System.out.println("Usage: [server]");
       return;
     }
     String hostname = args[0];
-    int x = Integer.parseInt(args[1]);
-    int y = Integer.parseInt(args[2]);
 
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
@@ -27,18 +26,36 @@ public class Client {
       client.setConfig(config);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
+      return;
     }
 
-    List<Integer> params = new ArrayList<Integer>();
-    params.add(x);
-    params.add(y);
+    // Get FrontEnd Welcome
+    Object[] reply;
+    String request;
+
+    List<Object> params = new ArrayList<Object>();
 
     try {
-      Object[] result = (Object[]) client.execute("Sample.sumAndDifference", params);
-      System.out.println("Sum is " + result[0]);
-      System.out.println("Difference is " + result[1]);
+      reply = (Object[]) client.execute("Sample.welcome", params);
+      System.out.println(reply);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
+      return;
+    }
+    Scanner scanner;
+    //  Start accepting commands
+    while (true) {
+      System.out.println("Enter your username: ");
+      scanner = new Scanner(System.in);
+      request = scanner.nextLine();
+      
+      System.out.println("Waiting for Request");
+      try {
+        reply = (Object[]) client.execute("Sample.handleRequest", params);
+      } catch (Exception e) {
+        System.err.println("Client exception: " + e);
+        return;
+      }
     }
   }
 

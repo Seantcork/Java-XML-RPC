@@ -1,7 +1,7 @@
 import org.apache.xmlrpc.webserver.WebServer; 
 import org.apache.xmlrpc.server.XmlRpcServer;
 import org.apache.xmlrpc.server.PropertyHandlerMapping;
-import Java.util.*
+import Java.util.*;
 
 
 public class Catalog{
@@ -10,11 +10,10 @@ public class Catalog{
 	SortedMap<Integer, Book> Booklist = new SortedMap<Integer, Book>();
 
 
-	public 
 
 
-	public void handleQuerry(args){
-		if(args == string){
+	public void handleQuerry(Object[] args){
+		if(args){
 			getAllTopics(args);
 		}
 		else if(args == integer){
@@ -29,13 +28,13 @@ public class Catalog{
 			if(x.topic.equal(topic) == 0)
 				books.add(x);
 		}
-		return books
+		return books;
 	}
 
 	public Book getBook(int item_num){
 		Book book = Booklist.get(item_num);
 		if(book == Null){
-			System.out.println("item doesnt exist")
+			System.out.println("item doesnt exist");
 			return;
 		}
 		else{
