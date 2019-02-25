@@ -7,7 +7,7 @@ class Book {
 	int item_num;
 	int qantity;
 
-	public Book(string title, string topic, string author, int item_num, int quantity) {
+	public Book(String title, String topic, String author, int item_num, int quantity) {
 		title = title;
 		topic = topic;
 		author = author;
@@ -29,6 +29,7 @@ class Book {
 	}
 
 	public void info() {
+		System.out.println("hey");
 
 	}
 }
