@@ -1,9 +1,9 @@
 public static final int restock_val = 10;
 
 class Book {
-	string title;
-	string topic;
-	string author;
+	String title;
+	String topic;
+	String author;
 	int item_num;
 	int qantity;
 
