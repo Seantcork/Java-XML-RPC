@@ -68,6 +68,8 @@ public class Catalog{
 		Booklist.put(book.item_num, book);
 		book = new Book("How to fix your circuits", "Self Help Books For Robots", "Robot Company", 303, 10);
 		Booklist.put(book.item_num, book);
+
+		System.out.println("createBookstore");
 	}
 
 	public static void main(String[] args) {
@@ -81,10 +83,10 @@ public class Catalog{
 	      xmlRpcServer.setHandlerMapping(phm);
 	      server.start();
 	      System.out.println("order server started");
+	      createBookstore();
 	    } catch (Exception e) {
 	      System.err.println("Server exception: " + e);
 	    }
-	    createBookstore();
 
 	  }
 }
