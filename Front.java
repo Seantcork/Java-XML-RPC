@@ -26,7 +26,7 @@ public class Front {
       System.err.println("Client exception: " + e);
     }
 
-    ArrayList<String> params;
+    ArrayList<String> params = new ArrayList<string>();
     params.add(arg);
 
     if(function.equals("search")){
