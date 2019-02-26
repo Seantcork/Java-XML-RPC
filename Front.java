@@ -42,10 +42,13 @@ public class Front {
     
   }
 
-  public Object[] welcome() {
+  public Object[] welcome(int x, int y) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
     
+    List<Integer> params = new ArrayList<Integer>();
+    params.add(x);
+    params.add(y);
     try {
       config.setServerURL(new URL("http://localhost:8123"));
       client = new XmlRpcClient();
@@ -55,7 +58,7 @@ public class Front {
     }
 
     try {
-      result = (Object[]) client.execute("Order.welcome");
+      result = (Object[]) client.execute("Order.welcome", params);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
     }
