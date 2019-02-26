@@ -9,11 +9,11 @@ class Book {
 	int quantity;
 
 	public Book(String title, String topic, String author, int item_num, int quantity) {
-		title = title;
-		topic = topic;
-		author = author;
-		item_num = item_num;
-		quantity = quantity;
+		this.title = title;
+		this.topic = topic;
+		this.author = author;
+		this.item_num = item_num;
+		this.quantity = quantity;
 	}
 
 	public void reduce() {
