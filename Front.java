@@ -11,7 +11,7 @@ import java.util.*;
  * A simple example XML-RPC server program.
  */
 public class Front { 
-  Object[] result;
+  String result;
   String welcome_reply;
 
   public String HandleRequest(String function, String arg) {
