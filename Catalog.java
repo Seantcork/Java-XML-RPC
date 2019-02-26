@@ -16,26 +16,35 @@ public class Catalog{
 	  return answer;
 	}
 
-	public ArrayList<Book> query_by_topic(String topic){
+	public String query_by_topic(String topic){
+		String response;
 		ArrayList<Book> books = new ArrayList<Book>();
 		for(Book x: Booklist.values()){
 			if(x.topic.equals(topic)){
 				books.add(x);
 			}
 		}
+
+		for(Book y: books){
+			reponse += "Title: " + y.title + " Topic: " + y.topic + " Author: " + y.author +
+			" Item num: " + y.item_num + " Quantity + " y.quantity + "\n";
+		}
 		return books;
 	}
 
-	public Book query_by_item(String item_num){
+	public String query_by_item(String item_num){
+		String response;
 		System.out.println(item_num);
 		int num = Integer.parseInt(item_num);
 		Book book = Booklist.get(num);
 		if(book == null){
-			System.out.println("item doesnt exist");
-			return null;
+			response = "item doesnt exit\n"
+			return response;
 		}
 		else{
-			return book;
+			reponse += "Title: " + book.title + " Topic: " + book.topic + " Author: " + book.author +
+			" Item num: " + book.item_num + " Quantity + " book.quantity + "\n"
+			return response;
 		}
 
 	}
@@ -51,7 +60,6 @@ public class Catalog{
 		Booklist = new HashMap<Integer, Book>();
 		Book book = new Book("Dune", "sci-fi", "Frank Herbert", 101, 10);
 		Booklist.put(book.item_num, book);
-		System.out.println(book.title);
 		book = new Book("Foundation", "sci-fi", "Issac Assimov", 102, 10);
 		Booklist.put(book.item_num, book);
 		book = new Book("Enders Game", "sci-fi", "Orson Scott Card", 103, 10);

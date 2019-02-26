@@ -31,7 +31,7 @@ class Book {
 
 	public void info() {
 		System.out.print("Title: " + title + " Author: " + author + " Topic: " + topic + " Item_Id: " +
-		 item_num + " Quantity in Stock: " + quantity);
+		 item_num + " Quantity in Stock: " + quantity +"\n");
 
 	}
 }
