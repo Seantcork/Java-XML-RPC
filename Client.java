@@ -37,29 +37,39 @@ public class Client {
     params.add(1);
     params.add(2);
 
+
     try {
       System.out.println("tryint to execute welcome");
-      reply = (Object[]) client.execute("Front.welcome", params);
+      reply = (Object[]) client.execute("Sample.sum", params);
       System.out.println(reply);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
       return;
     }
-    Scanner scanner;
-    //  Start accepting commands
-    while (true) {
-      System.out.println("Enter your username: ");
-      scanner = new Scanner(System.in);
-      request = scanner.nextLine();
+
+    // try {
+    //   System.out.println("tryint to execute welcome");
+    //   reply = (Object[]) client.execute("Front.welcome", params);
+    //   System.out.println(reply);
+    // } catch (Exception e) {
+    //   System.err.println("Client exception: " + e);
+    //   return;
+    // }
+    // Scanner scanner;
+    // //  Start accepting commands
+    // while (true) {
+    //   System.out.println("Enter your username: ");
+    //   scanner = new Scanner(System.in);
+    //   request = scanner.nextLine();
       
-      System.out.println("Waiting for Request");
-      try {
-        reply = (Object[]) client.execute("Front.handleRequest", params);
-      } catch (Exception e) {
-        System.err.println("Client exception: " + e);
-        return;
-      }
-    }
+    //   System.out.println("Waiting for Request");
+    //   try {
+    //     reply = (Object[]) client.execute("Front.handleRequest", params);
+    //   } catch (Exception e) {
+    //     System.err.println("Client exception: " + e);
+    //     return;
+    //   }
+    // }
   }
 
 }
