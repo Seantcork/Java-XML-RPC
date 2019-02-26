@@ -16,6 +16,8 @@ public class Front {
 
   public Object[] HandleRequest(String function, String arg) {
     System.out.println("got here");
+    System.out.println(function);
+    System.out.println(arg);
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
     

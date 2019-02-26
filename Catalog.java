@@ -27,6 +27,7 @@ public class Catalog{
 	}
 
 	public Book query_by_item(String item_num){
+		System.out.println(item_num);
 		int num = Integer.parseInt(item_num);
 		Book book = Booklist.get(num);
 		if(book == null){
