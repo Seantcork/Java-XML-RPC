@@ -29,7 +29,7 @@ public class Catalog{
 			reponse += "Title: " + y.title + " Topic: " + y.topic + " Author: " + y.author +
 			" Item num: " + y.item_num + " Quantity " +  y.quantity + "\n";
 		}
-		return books;
+		return response;
 	}
 
 	public String query_by_item(String item_num){
@@ -42,7 +42,7 @@ public class Catalog{
 			return response;
 		}
 		else{
-			reponse += "Title: " + book.title + " Topic: " + book.topic + " Author: " + book.author +
+			response += "Title: " + book.title + " Topic: " + book.topic + " Author: " + book.author +
 			" Item num: " + book.item_num + " Quantity " + book.quantity + "\n";
 			return response;
 		}
