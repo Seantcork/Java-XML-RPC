@@ -53,11 +53,11 @@ public class Client {
       System.out.println("Here are the available actions\nsearch(topic)\nlookup(item_number)\nbuy(item_number)\n");
       scanner = new Scanner(System.in);
       request = scanner.nextLine();
-      String[] args = request.split(" ");
+      String[] line = request.split(" ");
       
       System.out.println("Waiting for Request");
       try {
-        reply = (Object[]) client.execute("Front.handleRequest", args);
+        reply = (Object[]) client.execute("Front.handleRequest", line);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
         return;
