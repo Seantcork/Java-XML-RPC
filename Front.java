@@ -47,7 +47,7 @@ public class Front {
     }
 
     else if(function.equals("buy")){
-      sys.out.println("hey");
+      System.out.println("hey");
     }
 
     return result;
