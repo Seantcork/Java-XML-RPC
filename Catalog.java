@@ -4,10 +4,17 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
 import java.util.*;
 
 
-public class Catalog{
+
+public class Catalogue{
 
 
 	HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
+
+	public String welcome(int x, int y) {
+	  System.out.println("calling welcome");
+	  String answer = "WELCOME TO THE BOOKSTORE\nHave a look around\n";
+	  return answer;
+	}
 
 	public ArrayList<Book> query_by_topic(String topic){
 		ArrayList<Book> books = new ArrayList<Book>();
@@ -68,7 +75,7 @@ public class Catalog{
 	      XmlRpcServer xmlRpcServer;
 	      WebServer server = new WebServer(8123);
 	      xmlRpcServer = server.getXmlRpcServer();
-	      phm.addHandler("Order", Order.class);
+	      phm.addHandler("Catalogue", Catalogue.class);
 	      xmlRpcServer.setHandlerMapping(phm);
 	      server.start();
 	      System.out.println("order server started");

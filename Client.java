@@ -39,15 +39,6 @@ public class Client {
     params.add(2);
 
 
-    // try {
-    //   System.out.println("tryint to execute welcome");
-    //   reply = (Object[]) client.execute("Sample.sum", params);
-    //   System.out.println(reply);
-    // } catch (Exception e) {
-    //   System.err.println("Client exception: " + e);
-    //   return;
-    // }
-
     try {
       System.out.println("trying to execute welcome");
       welcome_reply = (String) client.execute("Front.welcome", params);
@@ -56,16 +47,17 @@ public class Client {
       System.err.println("Client exception: " + e);
       return;
     }
-    // Scanner scanner;
-    // //  Start accepting commands
+    Scanner scanner;
+    //  Start accepting commands
     // while (true) {
-    //   System.out.println("Enter your username: ");
+    //   System.out.println("Here are the available actions\nsearch(topic)\nlookup(item_number)\nbuy(item_number)\n");
     //   scanner = new Scanner(System.in);
     //   request = scanner.nextLine();
+    //   String[] args = request.split(" ");
       
     //   System.out.println("Waiting for Request");
     //   try {
-    //     reply = (Object[]) client.execute("Front.handleRequest", params);
+    //     reply = (Object[]) client.execute("Front.handleRequest", args);
     //   } catch (Exception e) {
     //     System.err.println("Client exception: " + e);
     //     return;

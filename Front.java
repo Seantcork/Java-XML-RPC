@@ -14,7 +14,7 @@ public class Front {
   Object[] result;
   String welcome_reply;
 
-  public Object[] sumAndDifference(int x, int y) {
+  public Object[] HandleRequest(String function, Sring arg) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
     
@@ -26,20 +26,29 @@ public class Front {
       System.err.println("Client exception: " + e);
     }
 
+    ArrayList<String> params;
+    params.add(arg);
 
-    List<Integer> params = new ArrayList<Integer>();
-    params.add(x);
-    params.add(y);
+    if(function.equals("search")){
+      try {
+        result = (Object[]) client.execute("Catalogue.query_by_topic", params);
+      } catch (Exception e) {
+        System.err.println("Client exception: " + e);
+      }
 
-    try {
-      result = (Object[]) client.execute("Order.sumAndDifference", params);
-      System.out.println("Sum is " + result[0]);
-      System.out.println("Difference is " + result[1]);
-    } catch (Exception e) {
-      System.err.println("Client exception: " + e);
     }
 
+    else if(function.equals("lookup")){}
+      try {
+        result = (Object[]) client.execute("Catalogue.query_by_item", params);
+      } catch (Exception e) {
+        System.err.println("Client exception: " + e);
+      }
     return result;
+
+    else if(function.equals("buy")){
+      sys.out.println("hey");
+    }
     
   }
 
@@ -50,7 +59,7 @@ public class Front {
     List<Integer> params = new ArrayList<Integer>();
     params.add(x);
     params.add(y);
-    System.out.println("int welcome in fron server");
+    System.out.println("in welcome in fron server");
     try {
       config.setServerURL(new URL("http://localhost:8123"));
       client = new XmlRpcClient();
@@ -60,7 +69,7 @@ public class Front {
     }
 
     try {
-      welcome_reply = (String) client.execute("Order.welcome", params);
+      welcome_reply = (String) client.execute("Catalogue.welcome", params);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
     }
