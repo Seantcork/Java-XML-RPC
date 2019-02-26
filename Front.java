@@ -14,7 +14,7 @@ public class Front {
   Object[] result;
   String welcome_reply;
 
-  public Object[] HandleRequest(String function, Sring arg) {
+  public Object[] HandleRequest(String function, String arg) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
     
