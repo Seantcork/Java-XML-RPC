@@ -49,7 +49,7 @@ public class Front {
     List<Integer> params = new ArrayList<Integer>();
     params.add(x);
     params.add(y);
-    system.out.println("int welcome in fron server");
+    System.out.println("int welcome in fron server");
     try {
       config.setServerURL(new URL("http://localhost:8123"));
       client = new XmlRpcClient();
