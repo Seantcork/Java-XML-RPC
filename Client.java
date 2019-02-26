@@ -36,7 +36,7 @@ public class Client {
 
     List<Object> params = new ArrayList<Object>();
     params.add(1);
-    params.add(2)
+    params.add(2);
 
 
     try {
