@@ -27,7 +27,7 @@ public class Catalog{
 
 		for(Book y: books){
 			reponse += "Title: " + y.title + " Topic: " + y.topic + " Author: " + y.author +
-			" Item num: " + y.item_num + " Quantity + " y.quantity + "\n";
+			" Item num: " + y.item_num + " Quantity " +  y.quantity + "\n";
 		}
 		return books;
 	}
@@ -38,12 +38,12 @@ public class Catalog{
 		int num = Integer.parseInt(item_num);
 		Book book = Booklist.get(num);
 		if(book == null){
-			response = "item doesnt exit\n"
+			response = "item doesnt exit\n";
 			return response;
 		}
 		else{
 			reponse += "Title: " + book.title + " Topic: " + book.topic + " Author: " + book.author +
-			" Item num: " + book.item_num + " Quantity + " book.quantity + "\n"
+			" Item num: " + book.item_num + " Quantity " + book.quantity + "\n";
 			return response;
 		}
 
