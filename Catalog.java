@@ -51,7 +51,7 @@ public class Catalog{
 		Booklist = new HashMap<Integer, Book>();
 		Book book = new Book("Dune", "sci-fi", "Frank Herbert", 101, 10);
 		Booklist.put(book.item_num, book);
-		System.print.out(book.title);
+		System.out.println(book.title);
 		book = new Book("Foundation", "sci-fi", "Issac Assimov", 102, 10);
 		Booklist.put(book.item_num, book);
 		book = new Book("Enders Game", "sci-fi", "Orson Scott Card", 103, 10);
