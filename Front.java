@@ -42,7 +42,7 @@ public class Front {
     
   }
 
-  public Object[] welcome(int x, int y) {
+  public String welcome(int x, int y) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
     
@@ -59,7 +59,7 @@ public class Front {
     }
 
     try {
-      result = (Object[]) client.execute("Order.welcome", params);
+      result = (String) client.execute("Order.welcome", params);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
     }

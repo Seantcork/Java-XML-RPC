@@ -49,7 +49,7 @@ public class Client {
 
     try {
       System.out.println("trying to execute welcome");
-      reply = (Object[]) client.execute("Front.welcome", params);
+      reply = (String) client.execute("Front.welcome", params);
       System.out.println(reply);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
