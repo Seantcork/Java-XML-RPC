@@ -61,9 +61,7 @@ public class Front {
         System.err.println("Client exception: " + e);
       }
 
-      else if(function.equals("buy")){
-        System.out.println("hey");
-      }
+      System.out.println("hey");
 
     }
     else{
