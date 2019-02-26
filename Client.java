@@ -30,8 +30,8 @@ public class Client {
     }
 
     // Get FrontEnd Welcome
-    String welcome_reply;
     String reply;
+    String welcome_reply;
     String request;
 
     List<Object> params = new ArrayList<Object>();
@@ -52,13 +52,12 @@ public class Client {
       scanner = new Scanner(System.in);
       request = scanner.nextLine();
       String[] line = request.split(" ");
-      params.add(line[0]);
-      params.add(line[1]);
+      params.add(line[0])
+      params.add(line[1])
 
       
       try {
-        reply = (String) client.execute("Front.HandleRequest", line);
-        System.out.println(reply);
+        reply = (String) client.execute("Front.HandleRequest", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
         return;
