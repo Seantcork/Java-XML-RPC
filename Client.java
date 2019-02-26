@@ -49,20 +49,20 @@ public class Client {
     }
     Scanner scanner;
     //  Start accepting commands
-    // while (true) {
-    //   System.out.println("Here are the available actions\nsearch(topic)\nlookup(item_number)\nbuy(item_number)\n");
-    //   scanner = new Scanner(System.in);
-    //   request = scanner.nextLine();
-    //   String[] args = request.split(" ");
+    while (true) {
+      System.out.println("Here are the available actions\nsearch(topic)\nlookup(item_number)\nbuy(item_number)\n");
+      scanner = new Scanner(System.in);
+      request = scanner.nextLine();
+      String[] args = request.split(" ");
       
-    //   System.out.println("Waiting for Request");
-    //   try {
-    //     reply = (Object[]) client.execute("Front.handleRequest", args);
-    //   } catch (Exception e) {
-    //     System.err.println("Client exception: " + e);
-    //     return;
-    //   }
-    // }
+      System.out.println("Waiting for Request");
+      try {
+        reply = (Object[]) client.execute("Front.handleRequest", args);
+      } catch (Exception e) {
+        System.err.println("Client exception: " + e);
+        return;
+      }
+    }
   }
 
 }
