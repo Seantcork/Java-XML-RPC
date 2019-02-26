@@ -14,7 +14,7 @@ public class Front {
   Object[] result;
   String welcome_reply;
 
-  public Object[] HandleRequest(String[] request) {
+  public Object[] HandleRequest(String function, String arg) {
     System.out.println("got here");
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
@@ -30,7 +30,7 @@ public class Front {
     ArrayList<String> params = new ArrayList<String>();
     params.add(request[1]);
 
-    if(request[0].equals("search")){
+    if(function.equals("search")){
       try {
         result = (Object[]) client.execute("Catalog.query_by_topic", params);
       } catch (Exception e) {
@@ -39,7 +39,7 @@ public class Front {
 
     }
 
-    else if(request[0].equals("lookup")){
+    else if(function.equals("lookup")){
       try {
         result = (Object[]) client.execute("Catalog.query_by_item", params);
       } catch (Exception e) {
@@ -47,7 +47,7 @@ public class Front {
       }
     }
 
-    else if(request[0].equals("buy")){
+    else if(function].equals("buy")){
       System.out.println("hey");
     }
 
