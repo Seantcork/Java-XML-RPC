@@ -51,7 +51,7 @@ public class Client {
     try {
       System.out.println("trying to execute welcome");
       welcome_reply = (String) client.execute("Front.welcome", params);
-      System.out.println(reply);
+      System.out.println(welcome_reply);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
       return;

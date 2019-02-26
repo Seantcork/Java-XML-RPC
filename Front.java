@@ -65,7 +65,7 @@ public class Front {
       System.err.println("Client exception: " + e);
     }
 
-    return result;
+    return welcome_reply;
   }
 
 
