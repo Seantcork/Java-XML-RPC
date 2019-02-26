@@ -50,14 +50,13 @@ public class Client {
     Scanner scanner;
     //  Start accepting commands
     while (true) {
-      System.out.println("Here are the available actions\nsearch(topic)\nlookup(item_number)\nbuy(item_number)\n");
+      System.out.println("Here are the available actions\nsearch topic\nlookup item_number\nbuy item_number\n");
       scanner = new Scanner(System.in);
       request = scanner.nextLine();
       String[] line = request.split(" ");
       
-      System.out.println("Waiting for Request");
       try {
-        reply = (Object[]) client.execute("Front.handleRequest", line);
+        reply = (Object[]) client.execute("Front.HandleRequest", line);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
         return;
