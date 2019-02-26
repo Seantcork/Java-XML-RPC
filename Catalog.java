@@ -12,7 +12,7 @@ public class Catalog{
 
 
 
-	public Book getAllTopics(String topic){
+	public ArrayList<Book> getAllTopics(String topic){
 		ArrayList<Book> books = new ArrayList<Book>();
 		for(Book x: Booklist.values()){
 			if(x.topic.equals(topic)){
