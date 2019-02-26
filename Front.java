@@ -55,7 +55,7 @@ public class Front {
     }
 
     try {
-      result = (Object[]) client.execute("Order.welcome", params);
+      result = (Object[]) client.execute("Order.welcome");
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
     }

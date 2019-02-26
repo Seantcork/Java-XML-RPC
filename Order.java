@@ -13,7 +13,7 @@ public Integer[] sumAndDifference(int x, int y) {
     return array;
   }
 
-public String welcome(int x, int y) {
+public String welcome() {
   System.out.println("calling welcome");
   return "WELCOME TO THE BOOKSTORE\nHave a look around\n";
 }
