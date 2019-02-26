@@ -52,8 +52,8 @@ public class Client {
       scanner = new Scanner(System.in);
       request = scanner.nextLine();
       String[] line = request.split(" ");
-      params.add(line[0])
-      params.add(line[1])
+      params.add(line[0]);
+      params.add(line[1]);
 
       
       try {
