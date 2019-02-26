@@ -26,7 +26,7 @@ public class Catalog{
 		}
 
 		for(Book y: books){
-			reponse += "Title: " + y.title + " Topic: " + y.topic + " Author: " + y.author +
+			response += "Title: " + y.title + " Topic: " + y.topic + " Author: " + y.author +
 			" Item num: " + y.item_num + " Quantity " +  y.quantity + "\n";
 		}
 		return response;
