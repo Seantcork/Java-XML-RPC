@@ -42,13 +42,10 @@ public class Front {
     
   }
 
-  public Object[] welcome(int x, int y) {
+  public Object[] welcome() {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
     
-    List<Integer> params = new ArrayList<Integer>();
-    params.add(x);
-    params.add(y);
     try {
       config.setServerURL(new URL("http://localhost:8123"));
       client = new XmlRpcClient();

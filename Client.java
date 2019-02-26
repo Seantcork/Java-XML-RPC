@@ -36,7 +36,7 @@ public class Client {
     List<Object> params = new ArrayList<Object>();
 
     try {
-      reply = (Object[]) client.execute("Front.welcome", params);
+      reply = (Object[]) client.execute("Front.welcome");
       System.out.println(reply);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
