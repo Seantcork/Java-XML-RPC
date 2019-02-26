@@ -74,7 +74,7 @@ public class Front {
       XmlRpcServer xmlRpcServer;
       WebServer server = new WebServer(8124);
       xmlRpcServer = server.getXmlRpcServer();
-      phm.addHandler("Sample", Front.class);
+      phm.addHandler("Front", Front.class);
       xmlRpcServer.setHandlerMapping(phm);
       server.start();
       System.out.println("front server started");

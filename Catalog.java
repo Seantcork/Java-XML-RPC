@@ -9,10 +9,7 @@ public class Catalog{
 
 	HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
 
-
-
-
-	public ArrayList<Book> getAllTopics(String topic){
+	public ArrayList<Book> query_by_topic(String topic){
 		ArrayList<Book> books = new ArrayList<Book>();
 		for(Book x: Booklist.values()){
 			if(x.topic.equals(topic)){
@@ -22,7 +19,7 @@ public class Catalog{
 		return books;
 	}
 
-	public Book getBook(int item_num){
+	public Book query_by_item(int item_num){
 		Book book = Booklist.get(item_num);
 		if(book == null){
 			System.out.println("item doesnt exist");
@@ -66,8 +63,7 @@ public class Catalog{
 
 	public static void main(String[] args) {
 	    try {
-	      int x = 1;
-	      System.out.println(x);
+	      System.out.println("Started Catalogue Server");
 	      PropertyHandlerMapping phm = new PropertyHandlerMapping();
 	      XmlRpcServer xmlRpcServer;
 	      WebServer server = new WebServer(8123);
@@ -79,9 +75,7 @@ public class Catalog{
 	    } catch (Exception e) {
 	      System.err.println("Server exception: " + e);
 	    }
-
-
-
+	    createBookstore();
 
 	  }
 }
