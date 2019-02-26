@@ -38,6 +38,7 @@ public class Client {
     params.add(2);
 
     try {
+      System.out.println("tryint to execute welcome");
       reply = (Object[]) client.execute("Front.welcome", params);
       System.out.println(reply);
     } catch (Exception e) {
