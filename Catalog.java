@@ -44,23 +44,23 @@ public class Catalog{
 	public void createBookstore(){
 		Book book = new Book("Dune", "sci-fi", "Frank Herbert", 101, 10);
 		Booklist.put(book.item_num, book);
-		Book book = new Book("Foundation", "sci-fi", "Issac Assimov", 102, 10);
+		book = new Book("Foundation", "sci-fi", "Issac Assimov", 102, 10);
 		Booklist.put(book.item_num, book);
-		Book book = new Book("Enders Game", "sci-fi", "Orson Scott Card", 103, 10);
+		book = new Book("Enders Game", "sci-fi", "Orson Scott Card", 103, 10);
 		Booklist.put(book.item_num, book);
-		Book book = new Book("How to get the Druid", "Elvish Erotic Novels", "Tree Man", 201, 10);
+		book = new Book("How to get the Druid", "Elvish Erotic Novels", "Tree Man", 201, 10);
 		Booklist.put(book.item_num, book);
-		Book book = new Book("Flower Power", "Elvish Erotic Novels", "Daisy Herb", 202, 10);
+		book = new Book("Flower Power", "Elvish Erotic Novels", "Daisy Herb", 202, 10);
 		Booklist.put(book.item_num, book);
-		Book book = new Book("Are you happy to Tree", "Elvish Erotic Novels", "Tree Man", 203, 10);
+		book = new Book("Are you happy to Tree", "Elvish Erotic Novels", "Tree Man", 203, 10);
 		Booklist.put(book.item_num, book);
-		Book book = new Book("Natures Neat", "Elvish Erotic Novels", "Fransisco Naturno", 204, 10);
+		book = new Book("Natures Neat", "Elvish Erotic Novels", "Fransisco Naturno", 204, 10);
 		Booklist.put(book.item_num, book);
-		Book book = new Book("Finding the right gears", "Self Help Books For Robots", "Automota Man", 301, 10);
+		book = new Book("Finding the right gears", "Self Help Books For Robots", "Automota Man", 301, 10);
 		Booklist.put(book.item_num, book);
-		Book book = new Book("Lubrication Firsts", "Self Help Books For Robots", "Self Help Robot", 302, 10);
+		book = new Book("Lubrication Firsts", "Self Help Books For Robots", "Self Help Robot", 302, 10);
 		Booklist.put(book.item_num, book);
-		Book book = new Book("How to fix your circuits", "Self Help Books For Robots", "Robot Company", 303, 10);
+		book = new Book("How to fix your circuits", "Self Help Books For Robots", "Robot Company", 303, 10);
 		Booklist.put(book.item_num, book);
 	}
 
