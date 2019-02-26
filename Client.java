@@ -61,6 +61,7 @@ public class Client {
       
       try {
         reply = (String) client.execute("Front.HandleRequest", params);
+        System.out.println(reply);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
         return;
