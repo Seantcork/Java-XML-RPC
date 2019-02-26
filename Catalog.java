@@ -17,7 +17,7 @@ public class Catalog{
 	}
 
 	public String query_by_topic(String topic){
-		String response;
+		String response = "";
 		ArrayList<Book> books = new ArrayList<Book>();
 		for(Book x: Booklist.values()){
 			if(x.topic.equals(topic)){
@@ -33,7 +33,7 @@ public class Catalog{
 	}
 
 	public String query_by_item(String item_num){
-		String response;
+		String response = "";
 		System.out.println(item_num);
 		int num = Integer.parseInt(item_num);
 		Book book = Booklist.get(num);
