@@ -35,6 +35,8 @@ public class Client {
     String request;
 
     List<Object> params = new ArrayList<Object>();
+    params.add(1);
+    params.add(2)
 
 
     try {
@@ -52,6 +54,7 @@ public class Client {
       scanner = new Scanner(System.in);
       request = scanner.nextLine();
       String[] line = request.split(" ");
+      params.clear();
       params.add(line[0]);
       params.add(line[1]);
 

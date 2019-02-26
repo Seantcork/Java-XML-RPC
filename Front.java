@@ -34,7 +34,7 @@ public class Front {
 
     if(function.equals("search")){
       try {
-        result = (String) client.execute("Catalog.query_by_topic", params);
+        result = (String)client.execute("Catalog.query_by_topic", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
       }
