@@ -8,7 +8,7 @@ import java.util.*;
 public class Catalog{
 
 
-	public static HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>(10);
+	public static HashMap<Integer, Book> Booklist;
 
 	public String welcome(int x, int y) {
 	  System.out.println("calling welcome");
@@ -48,8 +48,10 @@ public class Catalog{
 	}
 
 	public static void createBookstore(){
+		Booklist = new HashMap<Integer, Book>();
 		Book book = new Book("Dune", "sci-fi", "Frank Herbert", 101, 10);
 		Booklist.put(book.item_num, book);
+		system.print.out(book.title);
 		book = new Book("Foundation", "sci-fi", "Issac Assimov", 102, 10);
 		Booklist.put(book.item_num, book);
 		book = new Book("Enders Game", "sci-fi", "Orson Scott Card", 103, 10);
