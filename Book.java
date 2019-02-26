@@ -6,7 +6,7 @@ class Book {
 	String topic;
 	String author;
 	int item_num;
-	int qantity;
+	int quantity;
 
 	public Book(String title, String topic, String author, int item_num, int quantity) {
 		title = title;

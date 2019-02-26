@@ -12,22 +12,21 @@ public class Catalog{
 
 
 
-
-
 	public Book getAllTopics(String topic){
 		ArrayList<Book> books = new ArrayList<Book>();
 		for(Book x: Booklist.values()){
-			if(x.topic.equals(topic) == 0)
+			if(x.topic.equals(topic)){
 				books.add(x);
+			}
 		}
 		return books;
 	}
 
 	public Book getBook(int item_num){
 		Book book = Booklist.get(item_num);
-		if(book == Null){
+		if(book == null){
 			System.out.println("item doesnt exist");
-			return;
+			return null;
 		}
 		else{
 			return book;
@@ -44,7 +43,7 @@ public class Catalog{
 
 	public void createBookstore(){
 		Book book = new Book("Dune", "sci-fi", "Frank Herbert", 101, 10);
-		Booklist.add(book.item_num, book);
+		Booklist.put(book.item_num, book);
 	}
 
 	public static void main(String[] args) {
