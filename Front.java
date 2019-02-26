@@ -71,7 +71,7 @@ public class Front {
     }
 
     try {
-      welcome_reply = (String) client.execute("Catalogue.welcome", params);
+      welcome_reply = (String) client.execute("Catalog.welcome", params);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
     }
