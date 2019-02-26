@@ -26,8 +26,9 @@ public class Catalog{
 		return books;
 	}
 
-	public Book query_by_item(int item_num){
-		Book book = Booklist.get(item_num);
+	public Book query_by_item(String item_num){
+		int num = Integer.parseInt(item_num);
+		Book book = Booklist.get(num);
 		if(book == null){
 			System.out.println("item doesnt exist");
 			return null;
