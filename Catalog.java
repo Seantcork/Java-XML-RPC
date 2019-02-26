@@ -45,7 +45,7 @@ public class Catalogue{
 		}
 	}
 
-	public void createBookstore(){
+	public static void createBookstore(){
 		Book book = new Book("Dune", "sci-fi", "Frank Herbert", 101, 10);
 		Booklist.put(book.item_num, book);
 		book = new Book("Foundation", "sci-fi", "Issac Assimov", 102, 10);
