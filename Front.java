@@ -14,7 +14,7 @@ public class Front {
   Object[] result;
   String welcome_reply;
 
-  public Object[] HandleRequest(String function, String arg) {
+  public String HandleRequest(String function, String arg) {
     System.out.println("got here");
     System.out.println(function);
     System.out.println(arg);
@@ -34,7 +34,7 @@ public class Front {
 
     if(function.equals("search")){
       try {
-        result = (Object[]) client.execute("Catalog.query_by_topic", params);
+        result = client.execute("Catalog.query_by_topic", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
       }
@@ -43,7 +43,7 @@ public class Front {
 
     else if(function.equals("lookup")){
       try {
-        result = (Object[]) client.execute("Catalog.query_by_item", params);
+        result = client.execute("Catalog.query_by_item", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
       }
