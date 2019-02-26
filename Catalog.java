@@ -8,7 +8,7 @@ import java.util.*;
 public class Catalog{
 
 
-	public static HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
+	public static HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>(10);
 
 	public String welcome(int x, int y) {
 	  System.out.println("calling welcome");
