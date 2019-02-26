@@ -31,7 +31,7 @@ public class Front {
 
     if(function.equals("search")){
       try {
-        result = (Object[]) client.execute("Catalogue.query_by_topic", params);
+        result = (Object[]) client.execute("Catalog.query_by_topic", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
       }
@@ -40,7 +40,7 @@ public class Front {
 
     else if(function.equals("lookup")){
       try {
-        result = (Object[]) client.execute("Catalogue.query_by_item", params);
+        result = (Object[]) client.execute("Catalog.query_by_item", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
       }

@@ -5,7 +5,7 @@ import java.util.*;
 
 
 
-public class Catalogue{
+public class Catalog{
 
 
 	public static HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
@@ -75,7 +75,7 @@ public class Catalogue{
 	      XmlRpcServer xmlRpcServer;
 	      WebServer server = new WebServer(8123);
 	      xmlRpcServer = server.getXmlRpcServer();
-	      phm.addHandler("Catalogue", Catalogue.class);
+	      phm.addHandler("Catalog", Catalog.class);
 	      xmlRpcServer.setHandlerMapping(phm);
 	      server.start();
 	      System.out.println("order server started");
