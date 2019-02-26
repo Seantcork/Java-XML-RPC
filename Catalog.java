@@ -72,6 +72,12 @@ public class Catalog{
 		System.out.println("createBookstore");
 	}
 
+	public static void printBookstore(){
+		for(Book x: Booklist.values()){
+			x.info();
+		}
+	}
+
 	public static void main(String[] args) {
 	    try {
 	      System.out.println("Started Catalogue Server");
