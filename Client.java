@@ -38,23 +38,23 @@ public class Client {
     params.add(2);
 
 
-    try {
-      System.out.println("tryint to execute welcome");
-      reply = (Object[]) client.execute("Sample.sum", params);
-      System.out.println(reply);
-    } catch (Exception e) {
-      System.err.println("Client exception: " + e);
-      return;
-    }
-
     // try {
     //   System.out.println("tryint to execute welcome");
-    //   reply = (Object[]) client.execute("Front.welcome", params);
+    //   reply = (Object[]) client.execute("Sample.sum", params);
     //   System.out.println(reply);
     // } catch (Exception e) {
     //   System.err.println("Client exception: " + e);
     //   return;
     // }
+
+    try {
+      System.out.println("trying to execute welcome");
+      reply = (Object[]) client.execute("Front.welcome", params);
+      System.out.println(reply);
+    } catch (Exception e) {
+      System.err.println("Client exception: " + e);
+      return;
+    }
     // Scanner scanner;
     // //  Start accepting commands
     // while (true) {

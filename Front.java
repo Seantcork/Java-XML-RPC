@@ -77,7 +77,7 @@ public class Front {
       phm.addHandler("Front", Front.class);
       xmlRpcServer.setHandlerMapping(phm);
       server.start();
-      System.out.println("front server started");
+      System.out.println("XML-RPC server started");
     } catch (Exception e) {
       System.err.println("Server exception: " + e);
     }
