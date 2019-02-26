@@ -53,7 +53,7 @@ public class Client {
       System.out.println("Here are the available actions\nsearch topic\nlookup item_number\nbuy item_number\n");
       scanner = new Scanner(System.in);
       request = scanner.nextLine();
-      String[] line = request.split(" ");
+      String[] line = request.split(" ", 1);
       params.clear();
       params.add(line[0]);
       params.add(line[1]);
