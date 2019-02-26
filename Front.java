@@ -28,7 +28,7 @@ public class Front {
     }
 
     ArrayList<String> params = new ArrayList<String>();
-    params.add(request[1]);
+    params.add(arg);
 
     if(function.equals("search")){
       try {
