@@ -27,6 +27,26 @@ public class Front {
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
       }
+      ArrayList<String> params = new ArrayList<String>();
+      params.add(arg);
+
+    
+      if(function.equals("search")){
+        try {
+          result = (String) client.execute("Catalog.query_by_topic", params);
+        } catch (Exception e) {
+          System.err.println("Client exception: " + e);
+        }
+
+      }
+
+      else if(function.equals("lookup")){
+        try {
+          result = (String) client.execute("Catalog.query_by_item", params);
+        } catch (Exception e) {
+          System.err.println("Client exception: " + e);
+        }
+      }
     }
 
     else if(function.equals("buy")){
@@ -41,34 +61,13 @@ public class Front {
         System.err.println("Client exception: " + e);
       }
 
+      else if(function.equals("buy")){
+        System.out.println("hey");
+      }
+
     }
     else{
       result = "Not a function that the store can handle\n";
-    }
-
-    ArrayList<String> params = new ArrayList<String>();
-    params.add(arg);
-
-    
-    if(function.equals("search")){
-      try {
-        result = (String) client.execute("Catalog.query_by_topic", params);
-      } catch (Exception e) {
-        System.err.println("Client exception: " + e);
-      }
-
-    }
-
-    else if(function.equals("lookup")){
-      try {
-        result = (String) client.execute("Catalog.query_by_item", params);
-      } catch (Exception e) {
-        System.err.println("Client exception: " + e);
-      }
-    }
-
-    else if(function.equals("buy")){
-      System.out.println("hey");
     }
 
     return result;

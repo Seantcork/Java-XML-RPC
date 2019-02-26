@@ -10,7 +10,7 @@ public class Catalog{
 
 	public static HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
 
-	public String welcome(int x, int y) {
+	public String welcome(int x, int z) {
 	  System.out.println("calling welcome");
 	  String answer = "WELCOME TO THE BOOKSTORE\nHave a look around\n\n";
 	  answer+= "Here is a list of our books:\n";
