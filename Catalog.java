@@ -90,6 +90,7 @@ public class Catalog{
 	      server.start();
 	      System.out.println("order server started");
 	      createBookstore();
+	      printBookstore();
 	    } catch (Exception e) {
 	      System.err.println("Server exception: " + e);
 	    }
