@@ -38,17 +38,19 @@ public class Front {
 
     }
 
-    else if(function.equals("lookup")){}
+    else if(function.equals("lookup")){
       try {
         result = (Object[]) client.execute("Catalogue.query_by_item", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
       }
-    return result;
+    }
 
     else if(function.equals("buy")){
       sys.out.println("hey");
     }
+
+    return result;
     
   }
 
