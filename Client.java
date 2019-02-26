@@ -32,6 +32,7 @@ public class Client {
     // Get FrontEnd Welcome
     String welcome_reply;
     String reply;
+    String request;
 
     List<Object> params = new ArrayList<Object>();
 
