@@ -12,6 +12,7 @@ import java.util.*;
  */
 public class Front { 
   Object[] result;
+  String welcome_reply;
 
   public Object[] sumAndDifference(int x, int y) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
@@ -59,7 +60,7 @@ public class Front {
     }
 
     try {
-      result = (String) client.execute("Order.welcome", params);
+      welcome_reply = (String) client.execute("Order.welcome", params);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
     }
