@@ -15,6 +15,7 @@ public class Front {
   String welcome_reply;
 
   public Object[] HandleRequest(String[] request) {
+    System.out.println("got here");
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
     
