@@ -15,23 +15,41 @@ public class Front {
   String welcome_reply;
 
   public String HandleRequest(String function, String arg) {
-    System.out.println("got here");
-    System.out.println(function);
-    System.out.println(arg);
-    XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-    XmlRpcClient client = null;
     
-    try {
-      config.setServerURL(new URL("http://localhost:8123"));
-      client = new XmlRpcClient();
-      client.setConfig(config);
-    } catch (Exception e) {
-      System.err.println("Client exception: " + e);
+    if(function.equals("search") || function.equals("lookup")){
+      XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
+      XmlRpcClient client = null;
+
+      try {
+        config.setServerURL(new URL("http://localhost:8123"));
+        client = new XmlRpcClient();
+        client.setConfig(config);
+      } catch (Exception e) {
+        System.err.println("Client exception: " + e);
+      }
+    }
+
+    else if(function.equals("buy")){
+      XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
+      XmlRpcClient client = null;
+      
+      try {
+        config.setServerURL(new URL("http://localhost:8125"));
+        client = new XmlRpcClient();
+        client.setConfig(config);
+      } catch (Exception e) {
+        System.err.println("Client exception: " + e);
+      }
+
+    }
+    else{
+      result = "Not a function that the store can handle\n";
     }
 
     ArrayList<String> params = new ArrayList<String>();
     params.add(arg);
 
+    
     if(function.equals("search")){
       try {
         result = (String) client.execute("Catalog.query_by_topic", params);
@@ -60,11 +78,11 @@ public class Front {
   public String welcome(int x, int y) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
-    
     List<Integer> params = new ArrayList<Integer>();
     params.add(x);
     params.add(y);
     System.out.println("in welcome in fron server");
+    
     try {
       config.setServerURL(new URL("http://localhost:8123"));
       client = new XmlRpcClient();

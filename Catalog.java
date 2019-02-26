@@ -8,13 +8,19 @@ import java.util.*;
 public class Catalog{
 
 
-	public static HashMap<Integer, Book> Booklist;
+	public static HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
 
 	public String welcome(int x, int y) {
 	  System.out.println("calling welcome");
-	  String answer = "WELCOME TO THE BOOKSTORE\nHave a look around\n";
+	  String answer = "WELCOME TO THE BOOKSTORE\nHave a look around\n\n";
+	  answer+= "Here is a list of our books:\n";
+	  for(Book y: Booklist.values()){
+			answer += "TITLE: " + y.title + " TOPIC: " + y.topic + " AUTHOR: " + y.author +
+			" ITEM_NUM: " + y.item_num + " QUANTITY " +  y.quantity + "\n\n";
+		}
 	  return answer;
 	}
+
 
 	public String query_by_topic(String topic){
 		String response = "";
@@ -27,7 +33,7 @@ public class Catalog{
 
 		for(Book y: books){
 			response += "Title: " + y.title + " Topic: " + y.topic + " Author: " + y.author +
-			" Item num: " + y.item_num + " Quantity " +  y.quantity + "\n";
+			" Item num: " + y.item_num + " Quantity " +  y.quantity + "\n\n";
 		}
 		return response;
 	}
@@ -57,7 +63,6 @@ public class Catalog{
 	}
 
 	public static void createBookstore(){
-		Booklist = new HashMap<Integer, Book>();
 		Book book = new Book("Dune", "sci-fi", "Frank Herbert", 101, 10);
 		Booklist.put(book.item_num, book);
 		book = new Book("Foundation", "sci-fi", "Issac Assimov", 102, 10);
@@ -100,7 +105,6 @@ public class Catalog{
 	      server.start();
 	      System.out.println("order server started");
 	      createBookstore();
-	      printBookstore();
 	    } catch (Exception e) {
 	      System.err.println("Server exception: " + e);
 	    }
