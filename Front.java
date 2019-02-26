@@ -5,6 +5,7 @@ import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 import org.apache.xmlrpc.webserver.WebServer; 
 import org.apache.xmlrpc.server.XmlRpcServer;
 import org.apache.xmlrpc.server.PropertyHandlerMapping;
+import java.util.*;
 
 /**
  * A simple example XML-RPC server program.
