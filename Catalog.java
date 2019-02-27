@@ -111,7 +111,7 @@ public class Catalog{
         	}
 		};
 		Timer timer = new Timer();
-		timer.scheduleAtFixedRate(task, 30000, 30000);  
+		timer.scheduleAtFixedRate(repeatedTask, 30000, 30000);  
 	}
 
 	public static void main(String[] args) {
@@ -126,9 +126,7 @@ public class Catalog{
 	      server.start();
 	      System.out.println("order server started");
 	      createBookstore();
-	    
-	      timer.scheduleAtFixedRate(task, 30000, 30000);  
-
+	      restock();
 	    } catch (Exception e) {
 	      System.err.println("Server exception: " + e);
 	    }
