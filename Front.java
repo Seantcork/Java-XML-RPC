@@ -10,7 +10,12 @@ import java.util.*;
 /**
  * A simple example XML-RPC server program.
  */
-public class Front { 
+public class Front {
+
+  String order_server = "";
+  String catalog_server = "";
+
+
 
   public String HandleRequest(String function, String arg) {
     System.out.println("got here");
@@ -26,7 +31,7 @@ public class Front {
       Object[] books;
       String reply = "";
       try {
-        config.setServerURL(new URL("http://localhost:8123"));
+        config.setServerURL(new URL("http://" + catalog_server + ":8123"));
         client = new XmlRpcClient();
         client.setConfig(config);
       } catch (Exception e) {
@@ -50,7 +55,7 @@ public class Front {
       Object[] bookinfo;
       String reply = "";
       try {
-        config.setServerURL(new URL("http://localhost:8123"));
+        config.setServerURL(new URL("http://" + catalog_server + ":8123"));
         client = new XmlRpcClient();
         client.setConfig(config);
       } catch (Exception e) {
@@ -81,7 +86,7 @@ public class Front {
     else if(function.equals("buy")) {
       Object confirmation;
       try {
-        config.setServerURL(new URL("http://localhost:8125"));
+        config.setServerURL(new URL("http://" + order_server + ":8125"));
         client = new XmlRpcClient();
         client.setConfig(config);
       } catch (Exception e) {
@@ -131,6 +136,13 @@ public class Front {
 
   public static void main(String[] args) {
     try {
+       if (args.length != 2) {
+        System.out.println("Usage: [order server] [catalog server]");
+        return;
+      }
+      order_server = args[0];
+      catalog_server = args[1];
+
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
       WebServer server = new WebServer(8124);

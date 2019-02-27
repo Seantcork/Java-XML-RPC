@@ -8,6 +8,7 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
 import java.util.*;
 
 public class Order{
+  String catalog_server = "";
 
   public String buy(String item_num) {
     System.out.println("in order.buy");
@@ -57,8 +58,11 @@ public class Order{
 
 public static void main(String[] args) {
     try {
-      int x = 1;
-      System.out.println(x);
+      if (args.length != 1) {
+        System.out.println("Usage: [catalog server]");
+        return;
+      }
+      catalog_server = args[0];
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
       WebServer server = new WebServer(8125);
