@@ -4,13 +4,6 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
 import java.util.*;
 import java.util.Timer;
 import java.util.TimerTask; 
-class Helper extends TimerTask{ 
-    public void run(){ 
-        for(Book x: Booklist.values()){
-			x.restock();
-		}
-    } 
-} 
 
 public class Catalog{
 
@@ -109,6 +102,18 @@ public class Catalog{
 		}
 	}
 
+	public static void restock(){
+		TimerTask repeatedTask = new TimerTask() {
+			public void run(){
+				for(Book x: Booklist.values()){
+					x.restock();
+				}
+        	}
+		}
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(task, 30000, 30000);  
+	}
+
 	public static void main(String[] args) {
 	    try {
 	      System.out.println("Started Catalogue Server");
@@ -121,9 +126,7 @@ public class Catalog{
 	      server.start();
 	      System.out.println("order server started");
 	      createBookstore();
-	      
-	      Timer timer = new Timer();
-	      TimerTask task = new Helper(); 
+	    
 	      timer.scheduleAtFixedRate(task, 30000, 30000);  
 
 	    } catch (Exception e) {
