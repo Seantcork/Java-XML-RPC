@@ -109,7 +109,7 @@ public class Catalog{
 					x.restock();
 				}
         	}
-		}
+		};
 		Timer timer = new Timer();
 		timer.scheduleAtFixedRate(task, 30000, 30000);  
 	}
