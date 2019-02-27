@@ -134,22 +134,14 @@ public class Front {
   }
 
 
-  public static void set_catalog(String arg){
-    this.catalog_server = arg;
-  } 
-
-  public static void set_order(String arg){
-    this.order_server = arg;
-  }
-
   public static void main(String[] args) {
     try {
        if (args.length != 2) {
         System.out.println("Usage: [order server] [catalog server]");
         return;
       }
-      set_catalog(args[1]);
-      set_order(args[0]);
+      catalog_server = args[1];
+      order_server = args[0];
 
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;

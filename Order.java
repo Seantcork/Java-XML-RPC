@@ -54,10 +54,7 @@ public class Order{
     }
   }
 
-  public static void set_catalog(String arg){
-    this.catalog_server = arg;
-  }
-
+  
 
 
 public static void main(String[] args) {
@@ -66,7 +63,7 @@ public static void main(String[] args) {
         System.out.println("Usage: [catalog server]");
         return;
       }
-      set_catalog(args[0]);
+      catalog_server = args[0];
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
       WebServer server = new WebServer(8125);
