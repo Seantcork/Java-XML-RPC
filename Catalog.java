@@ -17,6 +17,7 @@ public class Catalog{
 
 	public static HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
 
+
 	public String welcome(int x, int z) {
 	  System.out.println("calling welcome");
 	  String answer = "WELCOME TO THE BOOKSTORE\nHave a look around\n\n";
@@ -29,53 +30,60 @@ public class Catalog{
 	}
 
 
-	public String query_by_topic(String topic){
-		String response = "";
+	public ArrayList<String> query_by_topic(String topic){
+		ArrayList<String> response = new ArrayList<String>();
 		ArrayList<Book> books = new ArrayList<Book>();
 		for(Book x: Booklist.values()){
 			if(x.topic.equals(topic)){
 				books.add(x);
 			}
 		}
-
+		if(books.size() == 0) {
+			response.add("No books found for this topic.");
+			return response;
+		}
+		// Maybe formatter
 		for(Book y: books){
-			response += "Title: " + y.title + " Topic: " + y.topic + " Author: " + y.author +
-			" Item num: " + y.item_num + " Quantity " +  y.quantity + "\n\n";
+			response.add(("Title: " + y.title + " Topic: " + y.topic + " Author: " + y.author +
+			" Item num: " + y.item_num + " Quantity " +  y.quantity));
 		}
 		return response;
 	}
 
-	public String query_by_item(String item_num){
-		String response = "";
+	public ArrayList<String> query_by_item(String item_num){
+		ArrayList<String> response = new ArrayList<String>();
 		System.out.println(item_num);
 		int num = Integer.parseInt(item_num);
 		Book book = Booklist.get(num);
 		if(book == null){
-			response = "item doesnt exit\n";
+			response.add("Item does not exist");
 			return response;
-		}
-		else{
-			response += "Title: " + book.title + " Topic: " + book.topic + " Author: " + book.author +
-			" Item num: " + book.item_num + " Quantity " + book.quantity + "\n";
+		} else {
+			response.add(book.title);
+			response.add(book.topic);
+			response.add(book.author);
+			response.add(String.valueOf(book.item_num));
+			response.add(String.valueOf(book.quantity));
 			return response;
 		}
 
 	}
 
-	public void update(int item_num, int quantity){
-		Book book = Booklist.get(item_num);
-		for(int i = 0; i < quantity; i++){
-			book.reduce();
-		}
+	public String update(String item_num) {
+		int num = Integer.parseInt(item_num);
+		Book book = Booklist.get(num);
+		book.reduce();
+		return "success";
 	}
 
 
 	public static void createBookstore(){
+		Booklist = new HashMap<Integer, Book>();
 		Book book = new Book("Dune", "sci-fi", "Frank Herbert", 101, 10);
 		Booklist.put(book.item_num, book);
 		book = new Book("Foundation", "sci-fi", "Issac Assimov", 102, 10);
 		Booklist.put(book.item_num, book);
-		book = new Book("Enders Game", "sci-fi", "Orson Scott Card", 103, 10);
+		book = new Book("The Origin of Species", "sci-fi", "Some old Kook", 103, 10);
 		Booklist.put(book.item_num, book);
 		book = new Book("How to get the Druid", "Elvish Erotic Novels", "Tree Man", 201, 10);
 		Booklist.put(book.item_num, book);
@@ -87,7 +95,7 @@ public class Catalog{
 		Booklist.put(book.item_num, book);
 		book = new Book("Finding the right gears", "Self Help Books For Robots", "Automota Man", 301, 10);
 		Booklist.put(book.item_num, book);
-		book = new Book("Lubrication Firsts", "Self Help Books For Robots", "Self Help Robot", 302, 10);
+		book = new Book("Lubrication Firsts", "Self Help Books For Robots", "Self Help Bot", 302, 10);
 		Booklist.put(book.item_num, book);
 		book = new Book("How to fix your circuits", "Self Help Books For Robots", "Robot Company", 303, 10);
 		Booklist.put(book.item_num, book);
@@ -113,9 +121,11 @@ public class Catalog{
 	      server.start();
 	      System.out.println("order server started");
 	      createBookstore();
+	      
 	      Timer timer = new Timer();
 	      TimerTask task = new Helper(); 
 	      timer.scheduleAtFixedRate(task, 30000, 30000);  
+
 	    } catch (Exception e) {
 	      System.err.println("Server exception: " + e);
 	    }

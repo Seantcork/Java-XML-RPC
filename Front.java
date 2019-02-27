@@ -11,75 +11,105 @@ import java.util.*;
  * A simple example XML-RPC server program.
  */
 public class Front { 
-  String result;
-  String welcome_reply;
 
   public String HandleRequest(String function, String arg) {
-    
-    if(function.equals("search") || function.equals("lookup")){
-      XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-      XmlRpcClient client = null;
+    System.out.println("got here");
+    System.out.println(function);
+    System.out.println(arg);
+    XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
+    XmlRpcClient client = null;
 
+    ArrayList<String> params = new ArrayList<String>();
+    params.add(arg);
+
+    if(function.equals("search")){
+      Object[] books;
+      String reply = "";
       try {
         config.setServerURL(new URL("http://localhost:8123"));
         client = new XmlRpcClient();
         client.setConfig(config);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
-      }
-      ArrayList<String> params = new ArrayList<String>();
-      params.add(arg);
-
-    
-      if(function.equals("search")){
-        try {
-          result = (String) client.execute("Catalog.query_by_topic", params);
-        } catch (Exception e) {
-          System.err.println("Client exception: " + e);
-        }
-
+        return "Error in search 1";
       }
 
-      else if(function.equals("lookup")){
-        try {
-          result = (String) client.execute("Catalog.query_by_item", params);
-        } catch (Exception e) {
-          System.err.println("Client exception: " + e);
-        }
+      try {
+        books = (Object[]) client.execute("Catalog.query_by_topic", params);
+      } catch (Exception e) {
+        System.err.println("Client exception: " + e);
+        return "Error in search 2";
       }
+      for(Object info: books) {
+        reply += info + "\n";
+      }
+      return reply;
     }
 
-    else if(function.equals("buy")){
-      XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-      XmlRpcClient client = null;
-      
+    else if(function.equals("lookup")) {
+      Object[] bookinfo;
+      String reply = "";
+      try {
+        config.setServerURL(new URL("http://localhost:8123"));
+        client = new XmlRpcClient();
+        client.setConfig(config);
+      } catch (Exception e) {
+        System.err.println("Client exception: " + e);
+        return "Error in lookup";
+      }
+      try {
+        bookinfo = (Object[]) client.execute("Catalog.query_by_item", params);
+      } catch (Exception e) {
+        System.err.println("Client exception: " + e);
+        return "Error in lookup";
+      }
+      if(bookinfo.length == 1) {
+        return bookinfo[0].toString();
+      }
+
+      for(Object info: bookinfo) {
+        reply = "Title: " + bookinfo[0] + 
+                " Topic: " + bookinfo[1] + 
+                " Author: " + bookinfo[2] +
+                " Item num: " + bookinfo[3] + 
+                " Quantity: " +  bookinfo[4];
+      }
+      return reply;
+
+    }
+
+    else if(function.equals("buy")) {
+      Object confirmation;
       try {
         config.setServerURL(new URL("http://localhost:8125"));
         client = new XmlRpcClient();
         client.setConfig(config);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
+        return "Error in buy 1";
       }
-
-      System.out.println("hey");
-
+      try {
+        confirmation = client.execute("Order.buy", params);
+      } catch (Exception e) {
+        System.err.println("Client exception: " + e);
+        return "Error in buy 2";
+      }
+      return confirmation.toString();
+    } 
+    else {
+      return "Command not recognized";
     }
-    else{
-      result = "Not a function that the store can handle\n";
-    }
-
-    return result;
-    
   }
 
   public String welcome(int x, int y) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
+    String reply;
+    
     List<Integer> params = new ArrayList<Integer>();
     params.add(x);
     params.add(y);
     System.out.println("in welcome in fron server");
-    
     try {
       config.setServerURL(new URL("http://localhost:8123"));
       client = new XmlRpcClient();
@@ -89,12 +119,13 @@ public class Front {
     }
 
     try {
-      welcome_reply = (String) client.execute("Catalog.welcome", params);
+      reply = (String) client.execute("Catalog.welcome", params);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
+      return "Error in welcome";
     }
 
-    return welcome_reply;
+    return reply;
   }
 
 
