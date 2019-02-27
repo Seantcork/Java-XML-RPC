@@ -16,7 +16,7 @@ def main():
 
 	name = "http://" + hostname + ":8124"
 	server = xmlrpclib.Server(name)
-	welcome_reply = server.Front.Welcome(x, y)
+	welcome_reply = server.Front.welcome(x, y)
 	print(str(welcome_reply))
 
 	while(True):
