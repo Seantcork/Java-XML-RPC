@@ -54,7 +54,7 @@ public class Order{
     }
   }
 
-  public static set_catalog(String arg){
+  public static void set_catalog(String arg){
     this.catalog_server = arg;
   }
 

@@ -134,11 +134,11 @@ public class Front {
   }
 
 
-  public static set_catalog(String arg){
+  public static void set_catalog(String arg){
     this.catalog_server = arg;
   } 
 
-  public static set_order(String arg){
+  public static void set_order(String arg){
     this.order_server = arg;
   }
 
