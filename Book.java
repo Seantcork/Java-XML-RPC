@@ -21,12 +21,12 @@ class Book {
 			System.out.println("Error: trying to reduce something thats out of stock");
 		}
 		else {
-			quantity -= 1;
+			this.quantity -= 1;
 		}
 	}
 
 	public void restock() {
-		quantity = restock_val;
+		this.quantity = restock_val;
 	}
 
 	public void info() {

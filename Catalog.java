@@ -2,8 +2,15 @@ import org.apache.xmlrpc.webserver.WebServer;
 import org.apache.xmlrpc.server.XmlRpcServer;
 import org.apache.xmlrpc.server.PropertyHandlerMapping;
 import java.util.*;
-
-
+import java.util.Timer;
+import java.util.TimerTask; 
+class Helper extends TimerTask{ 
+    public void run(){ 
+        for(Book x: Booklist.values()){
+			x.restock();
+		}
+    } 
+} 
 
 public class Catalog{
 
@@ -62,6 +69,7 @@ public class Catalog{
 		}
 	}
 
+
 	public static void createBookstore(){
 		Book book = new Book("Dune", "sci-fi", "Frank Herbert", 101, 10);
 		Booklist.put(book.item_num, book);
@@ -105,6 +113,9 @@ public class Catalog{
 	      server.start();
 	      System.out.println("order server started");
 	      createBookstore();
+	      Timer timer = new Timer();
+	      TimerTask task = new Helper(); 
+	      timer.scheduleAtFixedRate(task, 30000, 30000);  
 	    } catch (Exception e) {
 	      System.err.println("Server exception: " + e);
 	    }
