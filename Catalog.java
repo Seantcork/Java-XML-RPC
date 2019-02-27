@@ -8,13 +8,20 @@ import java.util.*;
 public class Catalog{
 
 
-	public static HashMap<Integer, Book> Booklist;
+	public static HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
 
-	public String welcome(int x, int y) {
+
+	public String welcome(int x, int z) {
 	  System.out.println("calling welcome");
-	  String answer = "WELCOME TO THE BOOKSTORE\nHave a look around\n";
+	  String answer = "WELCOME TO THE BOOKSTORE\nHave a look around\n\n";
+	  answer+= "Here is a list of our books:\n";
+	  for(Book y: Booklist.values()){
+			answer += "TITLE: " + y.title + " TOPIC: " + y.topic + " AUTHOR: " + y.author +
+			" ITEM_NUM: " + y.item_num + " QUANTITY " +  y.quantity + "\n\n";
+		}
 	  return answer;
 	}
+
 
 	public ArrayList<String> query_by_topic(String topic){
 		ArrayList<String> response = new ArrayList<String>();
