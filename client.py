@@ -4,17 +4,25 @@ import xmlrpclib, sys
 
 # A simple example XML-RPC client program.
 
-if len(sys.argv) != 4:
-    print "Usage: [server] [x] [y]"
-    sys.exit()
 
-hostname = sys.argv[1]
-x = int(sys.argv[2])
-y = int(sys.argv[3])
+def main():
+	if len(sys.argv) != 2:
+	    print "Usage: [server]"
+	    sys.exit()
 
-name = "http://" + hostname + ":8888"
-server = xmlrpclib.Server(name)
-answer = server.Sample.sumAndDifference(x, y)
+	hostname = sys.argv[1]
+	x = 1
+	y = 2
 
-print "Sum is " + str(answer[0])
-print "Difference is " + str(answer[1])
+	name = "http://" + hostname + ":8124"
+	server = xmlrpclib.Server(name)
+	welcome_reply = server.Front.Welcome(x, y)
+	print(str(welcome_reply))
+
+	while(True):
+		request = raw_input("Here are the available actions\nsearch topic\nlookup item_number\nbuy item_number\n")
+		args = s.split(" ", 1)
+		reply = server.Front.HandleRequest(args[0], args[1])
+
+	
+main()
