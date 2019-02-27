@@ -21,7 +21,7 @@ def main():
 
 	while(True):
 		request = raw_input("Here are the available actions\nsearch topic\nlookup item_number\nbuy item_number\n")
-		args = s.split(" ", 1)
+		args = request.split(" ", 1)
 		reply = server.Front.HandleRequest(args[0], args[1])
 
 	
