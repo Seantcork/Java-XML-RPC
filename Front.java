@@ -12,8 +12,8 @@ import java.util.*;
  */
 public class Front {
 
-  String order_server = "";
-  String catalog_server = "";
+  static String order_server = "";
+  static String catalog_server = "";
 
 
 

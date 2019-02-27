@@ -8,7 +8,7 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
 import java.util.*;
 
 public class Order{
-  String catalog_server = "";
+  static String catalog_server = "";
 
   public String buy(String item_num) {
     System.out.println("in order.buy");
