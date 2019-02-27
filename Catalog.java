@@ -62,10 +62,11 @@ public class Catalog{
 
 	}
 
-	public void update(String item_num) {
+	public String update(String item_num) {
 		int num = Integer.parseInt(item_num);
 		Book book = Booklist.get(num);
 		book.reduce();
+		return "success";
 	}
 
 	public static void createBookstore(){

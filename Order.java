@@ -31,12 +31,12 @@ public class Order{
       bookinfo = (Object[]) client.execute("Catalog.query_by_item", params);
     } catch (Exception e) {
       System.err.println("Client exception: " + e);
-      return "Error in Buy";
+      return "Error in Buy 1";
     }
 
     if(bookinfo.length == 0) {
       System.out.println("Error finding Book");
-      return "Error in Buy";
+      return "Error in Buy 2";
     }
 
     if(bookinfo[4].equals("0")) {
@@ -44,10 +44,10 @@ public class Order{
     } 
     else {
       try {
-        Object cat = client.execute("Catalog.update", params);
+        client.execute("Catalog.update", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
-        return "Error in Buy";
+        return "Error in Buy 3";
       }
       return "Purchase Approved";
     }
