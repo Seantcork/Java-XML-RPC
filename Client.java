@@ -52,7 +52,7 @@ public class Client {
       scanner = new Scanner(System.in);
       request = scanner.nextLine();
       String[] line = request.split(" ", 2);
-      if(!line.length) {
+      if(line.length == 0) {
         continue;
       }
       params.clear();
