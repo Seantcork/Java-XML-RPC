@@ -11,9 +11,10 @@ import java.util.*;
  * A simple example XML-RPC server program.
  */
 public class Front {
+
   static String order_server = "";
   static String catalog_server = "";
-  
+
   XmlRpcClient new_client(String port_num) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
@@ -100,7 +101,7 @@ public class Front {
     "----------------------------------------------------------\n" + 
     "----------------------------------------------------------\n";
     answer+= "Here are the topics that we are currently Stocking:\n";
-    answer += "sci-fi\n" + "Elvish Erotic Novels\n" + "Self Help Books For Robots\n";
+    answer += "    sci-fi\n" + "    Elvish Erotic Novels\n" + "    Self Help Books For Robots\n";
     return answer;
   }
 
@@ -111,8 +112,9 @@ public class Front {
         System.out.println("Usage: [order server] [catalog server]");
         return;
       }
-      order_server = args[0];
       catalog_server = args[1];
+      order_server = args[0];
+
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
       WebServer server = new WebServer(8124);
