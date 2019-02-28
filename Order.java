@@ -28,29 +28,32 @@ public class Order{
     ArrayList<String> params = new ArrayList<String>();
     params.add(item_num);
 
-    try {
-      bookinfo = (Object[]) client.execute("Catalog.query_by_item", params);
-    } catch (Exception e) {
-      System.err.println("Client exception: " + e);
-      return "Error in Buy 1";
-    }
 
-    if(bookinfo.length == 0) {
-      System.out.println("Error finding Book");
-      return "Error in Buy 2";
-    }
-
-    if(bookinfo[4].equals("0")) {
-      return ("Our apologies" + bookinfo[0] + " by " + bookinfo[2] + " is Out of Stock\n");
-    } 
-    else {
+    synchronized(this) {
       try {
-        client.execute("Catalog.update", params);
+        bookinfo = (Object[]) client.execute("Catalog.query_by_item", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
-        return "Error in Buy 3";
+        return "Error in Buy 1";
       }
-      return "Purchase Approved";
+
+      if(bookinfo.length == 0) {
+        System.out.println("Error finding Book");
+        return "Error in Buy 2";
+      }
+
+      if(bookinfo[4].equals("0")) {
+        return ("Our apologies, " + bookinfo[0] + " by " + bookinfo[2] + " is Out of Stock");
+      } 
+      else {
+        try {
+          client.execute("Catalog.update", params);
+        } catch (Exception e) {
+          System.err.println("Client exception: " + e);
+          return "Error in Buy 3";
+        }
+        return "Purchase Approved";
+      }
     }
   }
 
