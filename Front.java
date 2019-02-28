@@ -10,14 +10,27 @@ import java.util.*;
 /**
  * A simple example XML-RPC server program.
  */
-public class Front { 
+public class Front {
 
-  public String HandleRequest(String function, String arg) {
-    System.out.println("got here");
-    System.out.println(function);
-    System.out.println(arg);
+  static String order_server = "";
+  static String catalog_server = "";
+
+  XmlRpcClient new_client(String port_num) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
+    try {
+      config.setServerURL(new URL("http://" + catalog_server + ":" + port_num));
+      client = new XmlRpcClient();
+      client.setConfig(config);
+    } catch (Exception e) {
+      System.err.println("Client exception: " + e);
+      return null;
+    }
+    return client;
+  }
+
+  public String HandleRequest(String function, String arg) {
+
 
     ArrayList<String> params = new ArrayList<String>();
     params.add(arg);
@@ -25,20 +38,12 @@ public class Front {
     if(function.equals("search")){
       Object[] books;
       String reply = "";
-      try {
-        config.setServerURL(new URL("http://localhost:8123"));
-        client = new XmlRpcClient();
-        client.setConfig(config);
-      } catch (Exception e) {
-        System.err.println("Client exception: " + e);
-        return "Error in search 1";
-      }
-
+      XmlRpcClient client = new_client("8123");
       try {
         books = (Object[]) client.execute("Catalog.query_by_topic", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
-        return "Error in search 2";
+        return "Error in search";
       }
       for(Object info: books) {
         reply += info + "\n";
@@ -49,14 +54,7 @@ public class Front {
     else if(function.equals("lookup")) {
       Object[] bookinfo;
       String reply = "";
-      try {
-        config.setServerURL(new URL("http://localhost:8123"));
-        client = new XmlRpcClient();
-        client.setConfig(config);
-      } catch (Exception e) {
-        System.err.println("Client exception: " + e);
-        return "Error in lookup";
-      }
+      XmlRpcClient client = new_client("8123");
       try {
         bookinfo = (Object[]) client.execute("Catalog.query_by_item", params);
       } catch (Exception e) {
@@ -74,20 +72,14 @@ public class Front {
                 " Item num: " + bookinfo[3] + 
                 " Quantity: " +  bookinfo[4];
       }
+      reply += "\n";
       return reply;
 
     }
 
     else if(function.equals("buy")) {
       Object confirmation;
-      try {
-        config.setServerURL(new URL("http://localhost:8125"));
-        client = new XmlRpcClient();
-        client.setConfig(config);
-      } catch (Exception e) {
-        System.err.println("Client exception: " + e);
-        return "Error in buy 1";
-      }
+      XmlRpcClient client = new_client("8125");
       try {
         confirmation = client.execute("Order.buy", params);
       } catch (Exception e) {
@@ -101,36 +93,28 @@ public class Front {
     }
   }
 
-  public String welcome(int x, int y) {
-    XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-    XmlRpcClient client = null;
-    String reply;
-    
-    List<Integer> params = new ArrayList<Integer>();
-    params.add(x);
-    params.add(y);
-    System.out.println("in welcome in fron server");
-    try {
-      config.setServerURL(new URL("http://localhost:8123"));
-      client = new XmlRpcClient();
-      client.setConfig(config);
-    } catch (Exception e) {
-      System.err.println("Client exception: " + e);
-    }
-
-    try {
-      reply = (String) client.execute("Catalog.welcome", params);
-    } catch (Exception e) {
-      System.err.println("Client exception: " + e);
-      return "Error in welcome";
-    }
-
-    return reply;
+  public String welcome(int nothing) {
+    String answer = "----------------------------------------------------------\n" +
+    "----------------------------------------------------------\n" + 
+    "-----------------WELCOME TO THE BOOKSTORE-----------------\n" +
+    "--------------------Have a look around--------------------\n" + 
+    "----------------------------------------------------------\n" + 
+    "----------------------------------------------------------\n";
+    answer+= "Here are the topics that we are currently Stocking:\n";
+    answer += "sci-fi\n" + "Elvish Erotic Novels\n" + "Self Help Books For Robots\n";
+    return answer;
   }
 
 
   public static void main(String[] args) {
     try {
+       if (args.length != 2) {
+        System.out.println("Usage: [order server] [catalog server]");
+        return;
+      }
+      catalog_server = args[1];
+      order_server = args[0];
+
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
       WebServer server = new WebServer(8124);

@@ -10,19 +10,6 @@ public class Catalog{
 
 	public static HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
 
-
-	public String welcome(int x, int z) {
-	  System.out.println("calling welcome");
-	  String answer = "WELCOME TO THE BOOKSTORE\nHave a look around\n\n";
-	  answer+= "Here is a list of our books:\n";
-	  for(Book y: Booklist.values()){
-			answer += "TITLE: " + y.title + " TOPIC: " + y.topic + " AUTHOR: " + y.author +
-			" ITEM_NUM: " + y.item_num + " QUANTITY " +  y.quantity + "\n\n";
-		}
-	  return answer;
-	}
-
-
 	public ArrayList<String> query_by_topic(String topic){
 		ArrayList<String> response = new ArrayList<String>();
 		ArrayList<Book> books = new ArrayList<Book>();
@@ -37,7 +24,7 @@ public class Catalog{
 		}
 		// Maybe formatter
 		for(Book y: books){
-			response.add(("Title: " + y.title + " Topic: " + y.topic + " Author: " + y.author +
+			response.add((y.title + " By: " + y.author + " Genre: " + y.topic +
 			" Item num: " + y.item_num + " Quantity " +  y.quantity));
 		}
 		return response;
@@ -102,7 +89,7 @@ public class Catalog{
 		}
 	}
 
-	public static void restock(){
+	public static synchronized void restock(){
 		TimerTask repeatedTask = new TimerTask() {
 			public void run(){
 				for(Book x: Booklist.values()){
@@ -134,13 +121,3 @@ public class Catalog{
 	  }
 }
 
-
-
-/*Books
-
-Title: Dune
-
-
-
-
-*/
