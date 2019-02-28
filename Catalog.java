@@ -14,7 +14,8 @@ public class Catalog{
 	public String welcome(int x, int z) {
 	  String answer = "--------------------------------------------------\n" +
 	  "--------------------------------------------------\n" + 
-	  "WELCOME TO THE BOOKSTORE\nHave a look around\n\n" + 
+	  "--------------------WELCOME TO THE BOOKSTORE-------------------\n"
+	  + "--------------------Have a look around--------------------\n" + 
 	  "--------------------------------------------------+\n"
 	  + "--------------------------------------------------+\n";
 	  answer+= "Here are the topics that we are currently Stocking:\n";
