@@ -17,7 +17,7 @@ public class Order{
     Object[] bookinfo;
     
     try {
-      config.setServerURL(new URL("http://localhost:8123"));
+      config.setServerURL(new URL("http://" + catalog_server + ":8123"));
       client = new XmlRpcClient();
       client.setConfig(config);
     } catch (Exception e) {

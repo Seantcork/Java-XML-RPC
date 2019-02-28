@@ -138,8 +138,8 @@ public class Front {
         System.out.println("Usage: [order server] [catalog server]");
         return;
       }
-      catalog_server = args[1];
       order_server = args[0];
+      catalog_server = args[1];
 
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
