@@ -26,7 +26,7 @@ class Book {
 	}
 
 	public void restock() {
-		System.out.println("restocked")
+		System.out.println("restocked");
 		this.quantity += restock_val;
 	}
 
