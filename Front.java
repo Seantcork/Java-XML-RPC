@@ -11,10 +11,9 @@ import java.util.*;
  * A simple example XML-RPC server program.
  */
 public class Front {
-
   static String order_server = "";
   static String catalog_server = "";
-
+  
   XmlRpcClient new_client(String port_num) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
@@ -112,9 +111,8 @@ public class Front {
         System.out.println("Usage: [order server] [catalog server]");
         return;
       }
-      catalog_server = args[1];
       order_server = args[0];
-
+      catalog_server = args[1];
       PropertyHandlerMapping phm = new PropertyHandlerMapping();
       XmlRpcServer xmlRpcServer;
       WebServer server = new WebServer(8124);
