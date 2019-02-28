@@ -5,7 +5,7 @@
 
 
 #Import xmprpc
-import xmlrpclib, sys, time, random.randint
+import xmlrpclib, sys, time, random.randrange
 
 commands = ["buy", "search"]
 books = ["101","102","103","201","202","203","204","301","302","303"]
@@ -40,12 +40,12 @@ def main():
 	while(count < 500):
 		#client messages.
 		t = time.process_time()
-		reply = server.Front.HandleRequest(command[0], books[randint(0,9)])
+		reply = server.Front.HandleRequest(command[0], books[randrange(10)])
 		elapsed_time = time.process_time() - t
 		buyresults.append(elapsed_time)
 
 		t = time.process_time()
-		reply = server.Front.HandleRequest(command[1], topics[randint(0,2)])
+		reply = server.Front.HandleRequest(command[1], topics[randrange(10)])
 		elapsed_time = time.process_time() - t
 		searchresults.append(elapsed_time)
 	
