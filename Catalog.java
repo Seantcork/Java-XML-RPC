@@ -12,10 +12,12 @@ public class Catalog{
 
 
 	public String welcome(int x, int z) {
-	  String answer = "--------------------------------------------------" +
+	  String answer = "--------------------------------------------------\n" +
+	  "--------------------------------------------------\n" + 
 	  "WELCOME TO THE BOOKSTORE\nHave a look around\n\n" + 
-	  "--------------------------------------------------";
-	  answer+= "Here is a Topic that we are currently Stocking:\n";
+	  "--------------------------------------------------+\n"
+	  + "--------------------------------------------------+\n";
+	  answer+= "Here are the topics that we are currently Stocking:\n";
 	  answer += "sci-fi\n" + "Elvish Erotic Novels\n" + "Self Help Books For Robots\n";
 	  return answer;
 	}
