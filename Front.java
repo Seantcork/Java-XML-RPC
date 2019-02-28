@@ -8,13 +8,19 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
 import java.util.*;
 
 /**
- * A simple example XML-RPC server program.
+ * A XML-RPC server and client program that greets the client and forwards 
+ * requests to the Catalog and Order classes, returning responses to the client
  */
 public class Front {
 
   static String order_server = "";
   static String catalog_server = "";
 
+  /*
+   * Use: create a new XmlRpc client based on the port num of the Order/Catalog server
+   * Parameter: destination server port number
+   * return: client
+   */
   XmlRpcClient new_client(String port_num, String server) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
@@ -29,6 +35,12 @@ public class Front {
     return client;
   }
 
+  /*
+   * Use: Handle command request from client end by executing funciton on Catalog
+   *      or Order server
+   * Parameter: desired command, argument for that command
+   * return: the formatted string to show to client
+   */
   public String HandleRequest(String function, String arg) {
 
 
@@ -38,6 +50,7 @@ public class Front {
     if(function.equals("search")){
       Object[] books;
       String reply = "";
+
       XmlRpcClient client = new_client("8123", catalog_server);
       try {
         books = (Object[]) client.execute("Catalog.query_by_topic", params);
@@ -93,6 +106,11 @@ public class Front {
     }
   }
 
+  /*
+   * Use: Display welcome message to client to indicate succesful commention
+   * Parameter: execute requires a parameter be passed
+   * return: welcome string with current topics
+   */
   public String welcome(int nothing) {
     String answer = "----------------------------------------------------------\n" +
     "----------------------------------------------------------\n" + 

@@ -38,7 +38,6 @@ public class Client {
     params.add(1);
 
     try {
-      System.out.println("trying to execute welcome");
       welcome_reply = (String) client.execute("Front.welcome", params);
       System.out.println(welcome_reply);
     } catch (Exception e) {
@@ -49,15 +48,17 @@ public class Client {
     //  Start accepting commands
     while (true) {
       System.out.println("\nHere are the available actions\nsearch [genre]\nlookup [item_number]\nbuy [item_number]\n");
-      System.out.print("What would you like to do?\n");
+      System.out.print("What would you like to do? :  ");
       scanner = new Scanner(System.in);
       request = scanner.nextLine();
       String[] line = request.split(" ", 2);
+      if(!line.size()) {
+        continue;
+      }
       params.clear();
       params.add(line[0]);
       params.add(line[1]);
 
-      
       try {
         reply = (String) client.execute("Front.HandleRequest", params);
         System.out.println(reply);

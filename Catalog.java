@@ -5,11 +5,19 @@ import java.util.*;
 import java.util.Timer;
 import java.util.TimerTask; 
 
+   /*
+    * an XMLP server program for managing inventroy and returning book information
+    */
 public class Catalog{
 
 
 	public static HashMap<Integer, Book> Booklist = new HashMap<Integer, Book>();
 
+   /*
+    * Use: Get books cataloged under a specific topic id
+    * Parameter: topic being requested
+    * return: list of bookinfo in the form of strings
+    */
 	public ArrayList<String> query_by_topic(String topic){
 		ArrayList<String> response = new ArrayList<String>();
 		ArrayList<Book> books = new ArrayList<Book>();
@@ -30,6 +38,11 @@ public class Catalog{
 		return response;
 	}
 
+   /*
+    * Use: Get the book info for a specific book id
+    * Parameter: ID being requested
+    * return: bookinfo from Book class
+    */
 	public ArrayList<String> query_by_item(String item_num){
 		ArrayList<String> response = new ArrayList<String>();
 		System.out.println(item_num);
@@ -48,7 +61,11 @@ public class Catalog{
 		}
 
 	}
-
+   /*
+    * Use: Decrement book quantity by 1
+    * Parameter: item num of book being bought
+    * return: must return something for excecution
+    */
 	public String update(String item_num) {
 		int num = Integer.parseInt(item_num);
 		Book book = Booklist.get(num);
@@ -56,7 +73,9 @@ public class Catalog{
 		return "success";
 	}
 
-
+   /*
+    * Use: create bookstore adn fill it
+    */
 	public static void createBookstore(){
 		Booklist = new HashMap<Integer, Book>();
 		Book book = new Book("Dune", "sci-fi", "Frank Herbert", 101, 10);
@@ -82,13 +101,17 @@ public class Catalog{
 
 		System.out.println("createBookstore");
 	}
-
+   /*
+    * Use: print entire inventory
+    */
 	public static void printBookstore(){
 		for(Book x: Booklist.values()){
 			x.info();
 		}
 	}
-
+   /*
+    * Use: run a threadsafe restock of all books every 30s
+    */
 	public static synchronized void restock(){
 		TimerTask repeatedTask = new TimerTask() {
 			public void run(){
