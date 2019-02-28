@@ -8,18 +8,42 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
 import java.util.*;
 
 /**
- * A simple example XML-RPC server program.
+ * A XML-RPC server and client program that greets the client and forwards 
+ * requests to the Catalog and Order classes, returning responses to the client
  */
 public class Front {
 
   static String order_server = "";
   static String catalog_server = "";
-
-
-
-  public String HandleRequest(String function, String arg) {
+  
+  /*
+   * Use: create a new XmlRpc client based on the port num of the Order/Catalog server
+   * Parameter: destination server port number
+   * return: client
+   */
+  
+  XmlRpcClient new_client(String port_num) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
+    try {
+      config.setServerURL(new URL("http://" + catalog_server + ":" + port_num));
+      client = new XmlRpcClient();
+      client.setConfig(config);
+    } catch (Exception e) {
+      System.err.println("Client exception: " + e);
+      return null;
+    }
+    return client;
+  }
+
+  /*
+   * Use: Handle command request from client end by executing funciton on Catalog
+   *      or Order server
+   * Parameter: desired command, argument for that command
+   * return: the formatted string to show to client
+   */
+  public String HandleRequest(String function, String arg) {
+
 
     ArrayList<String> params = new ArrayList<String>();
     params.add(arg);
@@ -27,20 +51,12 @@ public class Front {
     if(function.equals("search")){
       Object[] books;
       String reply = "";
-      try {
-        config.setServerURL(new URL("http://" + catalog_server + ":8123"));
-        client = new XmlRpcClient();
-        client.setConfig(config);
-      } catch (Exception e) {
-        System.err.println("Client exception: " + e);
-        return "Error in search 1";
-      }
-
+      XmlRpcClient client = new_client("8123");
       try {
         books = (Object[]) client.execute("Catalog.query_by_topic", params);
       } catch (Exception e) {
         System.err.println("Client exception: " + e);
-        return "Error in search 2";
+        return "Error in search";
       }
       for(Object info: books) {
         reply += info + "\n";
@@ -51,14 +67,7 @@ public class Front {
     else if(function.equals("lookup")) {
       Object[] bookinfo;
       String reply = "";
-      try {
-        config.setServerURL(new URL("http://" + catalog_server + ":8123"));
-        client = new XmlRpcClient();
-        client.setConfig(config);
-      } catch (Exception e) {
-        System.err.println("Client exception: " + e);
-        return "Error in lookup";
-      }
+      XmlRpcClient client = new_client("8123");
       try {
         bookinfo = (Object[]) client.execute("Catalog.query_by_item", params);
       } catch (Exception e) {
@@ -83,14 +92,7 @@ public class Front {
 
     else if(function.equals("buy")) {
       Object confirmation;
-      try {
-        config.setServerURL(new URL("http://" + order_server + ":8125"));
-        client = new XmlRpcClient();
-        client.setConfig(config);
-      } catch (Exception e) {
-        System.err.println("Client exception: " + e);
-        return "Error in buy 1";
-      }
+      XmlRpcClient client = new_client("8125");
       try {
         confirmation = client.execute("Order.buy", params);
       } catch (Exception e) {
@@ -104,31 +106,21 @@ public class Front {
     }
   }
 
-  public String welcome(int x, int y) {
-    XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-    XmlRpcClient client = null;
-    String reply;
-    
-    List<Integer> params = new ArrayList<Integer>();
-    params.add(x);
-    params.add(y);
-    System.out.println("in welcome in fron server");
-    try {
-      config.setServerURL(new URL("http://localhost:8123"));
-      client = new XmlRpcClient();
-      client.setConfig(config);
-    } catch (Exception e) {
-      System.err.println("Client exception: " + e);
-    }
-
-    try {
-      reply = (String) client.execute("Catalog.welcome", params);
-    } catch (Exception e) {
-      System.err.println("Client exception: " + e);
-      return "Error in welcome";
-    }
-
-    return reply;
+  /*
+   * Use: Display welcome message to client to indicate succesful commention
+   * Parameter: execute requires a parameter be passed
+   * return: welcome string with current topics
+   */
+  public String welcome(int nothing) {
+    String answer = "----------------------------------------------------------\n" +
+    "----------------------------------------------------------\n" + 
+    "-----------------WELCOME TO THE BOOKSTORE-----------------\n" +
+    "--------------------Have a look around--------------------\n" + 
+    "----------------------------------------------------------\n" + 
+    "----------------------------------------------------------\n";
+    answer+= "Here are the topics that we are currently Stocking:\n";
+    answer += "    sci-fi\n" + "    Elvish Erotic Novels\n" + "    Self Help Books For Robots\n";
+    return answer;
   }
 
 
