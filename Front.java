@@ -15,18 +15,17 @@ public class Front {
 
   static String order_server = "";
   static String catalog_server = "";
-  
+
   /*
    * Use: create a new XmlRpc client based on the port num of the Order/Catalog server
    * Parameter: destination server port number
    * return: client
    */
-  
-  XmlRpcClient new_client(String port_num) {
+  XmlRpcClient new_client(String port_num, String server) {
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
     try {
-      config.setServerURL(new URL("http://" + catalog_server + ":" + port_num));
+      config.setServerURL(new URL("http://" + server + ":" + port_num));
       client = new XmlRpcClient();
       client.setConfig(config);
     } catch (Exception e) {
@@ -51,7 +50,8 @@ public class Front {
     if(function.equals("search")){
       Object[] books;
       String reply = "";
-      XmlRpcClient client = new_client("8123");
+
+      XmlRpcClient client = new_client("8123", catalog_server);
       try {
         books = (Object[]) client.execute("Catalog.query_by_topic", params);
       } catch (Exception e) {
@@ -67,7 +67,7 @@ public class Front {
     else if(function.equals("lookup")) {
       Object[] bookinfo;
       String reply = "";
-      XmlRpcClient client = new_client("8123");
+      XmlRpcClient client = new_client("8123", catalog_server);
       try {
         bookinfo = (Object[]) client.execute("Catalog.query_by_item", params);
       } catch (Exception e) {
@@ -92,7 +92,7 @@ public class Front {
 
     else if(function.equals("buy")) {
       Object confirmation;
-      XmlRpcClient client = new_client("8125");
+      XmlRpcClient client = new_client("8125", order_server);
       try {
         confirmation = client.execute("Order.buy", params);
       } catch (Exception e) {
