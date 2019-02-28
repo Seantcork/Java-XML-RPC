@@ -40,14 +40,14 @@ def main():
 	#loop that takes request from the client.
 	while(count < 500):
 		#client messages.
-		t = time.process_time()
+		t = time.time()
 		reply = server.Front.HandleRequest(command[0], books[randint(0, 9)])
-		elapsed_time = time.process_time() - t
+		elapsed_time = time.time() - t
 		buyresults.append(elapsed_time)
 
-		t = time.process_time()
+		t = time.time()
 		reply = server.Front.HandleRequest(command[1], topics[randint(0, 3)])
-		elapsed_time = time.process_time() - t
+		elapsed_time = time.time() - t
 		searchresults.append(elapsed_time)
 	
 	print("BUY FUNCTION RESULTS FOR 500 TESTS: ")
