@@ -41,7 +41,7 @@ public class Order{
     }
 
     if(bookinfo[4].equals("0")) {
-      return ("Our apologies" + bookinfo[0] + " by " + bookinfo[2] + " is Out of Stock");
+      return ("Our apologies" + bookinfo[0] + " by " + bookinfo[2] + " is Out of Stock\n");
     } 
     else {
       try {

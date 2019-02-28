@@ -50,7 +50,7 @@ public class Client {
     Scanner scanner;
     //  Start accepting commands
     while (true) {
-      System.out.println("Here are the available actions\nsearch topic\nlookup item_number\nbuy item_number\n");
+      System.out.println("\nHere are the available actions\nsearch [topic]\nlookup [item_number]\nbuy [item_number]\n");
       scanner = new Scanner(System.in);
       request = scanner.nextLine();
       String[] line = request.split(" ", 2);

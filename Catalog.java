@@ -12,13 +12,11 @@ public class Catalog{
 
 
 	public String welcome(int x, int z) {
-	  System.out.println("calling welcome");
-	  String answer = "WELCOME TO THE BOOKSTORE\nHave a look around\n\n";
-	  answer+= "Here is a list of our books:\n";
-	  for(Book y: Booklist.values()){
-			answer += "TITLE: " + y.title + " TOPIC: " + y.topic + " AUTHOR: " + y.author +
-			" ITEM_NUM: " + y.item_num + " QUANTITY " +  y.quantity + "\n\n";
-		}
+	  String answer = "--------------------------------------------------" +
+	  "WELCOME TO THE BOOKSTORE\nHave a look around\n\n" + 
+	  "--------------------------------------------------";
+	  answer+= "Here is a Topic that we are currently Stocking:\n";
+	  answer += "sci-fi\n" + "Elvish Erotic Novels\n" + "Self Help Books For Robots\n";
 	  return answer;
 	}
 
@@ -37,7 +35,7 @@ public class Catalog{
 		}
 		// Maybe formatter
 		for(Book y: books){
-			response.add(("Title: " + y.title + " Topic: " + y.topic + " Author: " + y.author +
+			response.add((y.title + " By: " + y.author + " Genre: " + y.topic +
 			" Item num: " + y.item_num + " Quantity " +  y.quantity));
 		}
 		return response;
@@ -134,13 +132,3 @@ public class Catalog{
 	  }
 }
 
-
-
-/*Books
-
-Title: Dune
-
-
-
-
-*/

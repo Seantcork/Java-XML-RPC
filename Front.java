@@ -18,9 +18,6 @@ public class Front {
 
 
   public String HandleRequest(String function, String arg) {
-    System.out.println("got here");
-    System.out.println(function);
-    System.out.println(arg);
     XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
     XmlRpcClient client = null;
 
@@ -79,6 +76,7 @@ public class Front {
                 " Item num: " + bookinfo[3] + 
                 " Quantity: " +  bookinfo[4];
       }
+      reply += "\n";
       return reply;
 
     }
