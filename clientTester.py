@@ -20,7 +20,7 @@ def main():
 
 	#Ask for the front end server
 	if len(sys.argv) != 2:
-	    print "Usage: [server]"
+	    print("Usage: [server]")
 	    sys.exit()
 
 
