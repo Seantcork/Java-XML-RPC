@@ -52,7 +52,7 @@ public class Order{
           System.err.println("Client exception: " + e);
           return "Error in Buy 3";
         }
-        return "Purchase Approved";
+        return "Purchase Approved!!!!!!!!!\nHope you enjoy " + bookinfo[0] + " its one of our favorites";
       }
     }
   }

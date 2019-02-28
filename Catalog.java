@@ -103,7 +103,7 @@ public class Catalog{
 		}
 	}
 
-	public static void restock(){
+	public static synchronized void restock(){
 		TimerTask repeatedTask = new TimerTask() {
 			public void run(){
 				for(Book x: Booklist.values()){

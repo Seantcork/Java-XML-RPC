@@ -51,6 +51,7 @@ public class Client {
     //  Start accepting commands
     while (true) {
       System.out.println("\nHere are the available actions\nsearch [genre]\nlookup [item_number]\nbuy [item_number]\n");
+      System.out.print("What would you like to do?");
       scanner = new Scanner(System.in);
       request = scanner.nextLine();
       String[] line = request.split(" ", 2);
