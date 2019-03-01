@@ -41,14 +41,15 @@ def main():
 	while(count < 500):
 		#client messages.
 		t = time.time()
-		reply = server.Front.HandleRequest(command[0], books[randint(0, 9)])
+		reply = server.Front.HandleRequest(commands[0], books[randint(0, 9)])
 		elapsed_time = time.time() - t
 		buyresults.append(elapsed_time)
 
 		t = time.time()
-		reply = server.Front.HandleRequest(command[1], topics[randint(0, 3)])
+		reply = server.Front.HandleRequest(commands[1], topics[randint(0, 3)])
 		elapsed_time = time.time() - t
 		searchresults.append(elapsed_time)
+		count ++;
 	
 	print("BUY FUNCTION RESULTS FOR 500 TESTS: ")
 	print(sum(buyresult) / length(buyresult))
