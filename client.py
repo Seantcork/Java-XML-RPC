@@ -37,7 +37,7 @@ def main():
 		request = raw_input("\nHere are the available actions\nsearch topic\nlookup item_number\nbuy item_number\nWhat would you like to do?\n\n")
 		args = request.split(" ", 1)
 		reply = server.Front.HandleRequest(args[0], args[1])
-		println(reply)
+		print("\n" + reply + "\n")
 
 	
 main()
