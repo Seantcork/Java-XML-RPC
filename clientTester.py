@@ -31,7 +31,7 @@ def run(server):
 		buyresults.append(elapsed_time)
 
 		t = time.time()
-		reply = server.Front.HandleRequest(commands[1], topics[randint(0, 3)])
+		reply = server.Front.HandleRequest(commands[1], topics[randint(0, 2)])
 		elapsed_time = time.time() - t
 		searchresults.append(elapsed_time)
 		count +=1;
