@@ -92,9 +92,9 @@ def main():
 
 
 	print("BUY FUNCTION RESULTS FOR 500 TESTS: ")
-	print(sum(buyresults) / length(buyresults))
+	print(sum(buyresults) / len(buyresults))
 	print("SEARCH FUNCTION RESULTS FOR 500 TESTS: ")
-	print(sum(searchresults) / length(searchresults))
+	print(sum(searchresults) / len(searchresults))
 
 
 
