@@ -20,7 +20,7 @@ searchresults = []
 #progam. 
 
 
-def run():
+def run(server):
 	count = 0
 	#loop that takes request from the client.
 	while(count < 500):
@@ -51,7 +51,7 @@ def main1():
 	welcome_reply = server.Front.welcome(x)
 	#print a welcome for the client
 	print(str(welcome_reply))
-	run()
+	run(server)
 	print("BUY FUNCTION RESULTS FOR 500 TESTS: ")
 	print(sum(buyresults) / length(buyresults))
 	print("SEARCH FUNCTION RESULTS FOR 500 TESTS: ")
@@ -81,7 +81,7 @@ def main():
 	jobs = []
 	for i in range(0, 15):
 		out_list = list()
-		thread = threading.Thread(target=run())
+		thread = threading.Thread(target=run(server))
 		jobs.append(thread)
 
 	for j in jobs:
