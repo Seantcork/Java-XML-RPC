@@ -35,7 +35,31 @@ def run():
 		elapsed_time = time.time() - t
 		searchresults.append(elapsed_time)
 		count +=1;
-	
+def main1():
+	if len(sys.argv) != 2:
+	    print("Usage: [server]")
+	    sys.exit()
+
+
+	#sets hostname as server name
+	hostname = sys.argv[1]
+	x = 1
+
+	name = "http://" + hostname + ":8124"
+	server = xmlrpclib.Server(name)
+	#have to give parameters to get welcome to work.
+	welcome_reply = server.Front.welcome(x)
+	#print a welcome for the client
+	print(str(welcome_reply))
+	run()
+	print("BUY FUNCTION RESULTS FOR 500 TESTS: ")
+	print(sum(buyresults) / length(buyresults))
+	print("SEARCH FUNCTION RESULTS FOR 500 TESTS: ")
+	print(sum(searchresults) / length(searchresults))
+	print("THIS WAS WITHOUT THREADS")
+	buyresults.clear()
+	searchresults.clear()
+
 def main():
 
 	#Ask for the front end server
@@ -75,4 +99,5 @@ def main():
 
 
 	
+main1()
 main()
