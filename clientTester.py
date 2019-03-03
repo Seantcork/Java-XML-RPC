@@ -57,8 +57,8 @@ def main1():
 	print("SEARCH FUNCTION RESULTS FOR 500 TESTS: ")
 	print(sum(searchresults) / len(searchresults))
 	print("THIS WAS WITHOUT THREADS")
-	buyresults.clear()
-	searchresults.clear()
+	del buyresults[:]
+	del searchresults[:]
 
 def main():
 
