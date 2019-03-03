@@ -34,7 +34,7 @@ def main():
 	#loop that takes request from the client.
 	while(True):
 		#client messages.
-		request = raw_input("\nHere are the available actions\nsearch topic\nlookup item_number\nbuy item_number\nWhat would you like to do?\n\n")
+		request = raw_input("\nHere are the available actions\nsearch topic\nlookup item_number\nbuy item_number\nWhat would you like to do?:\n\n")
 		args = request.split(" ", 1)
 		reply = server.Front.HandleRequest(args[0], args[1])
 		print("\n" + reply + "\n")

@@ -1,0 +1,48 @@
+[scork@ip-172-31-52-118 Project2]$ java Client 34.203.243.15
+----------------------------------------------------------
+----------------------------------------------------------
+-----------------WELCOME TO THE BOOKSTORE-----------------
+--------------------Have a look around--------------------
+----------------------------------------------------------
+----------------------------------------------------------
+Here are the topics that we are currently Stocking:
+    sci-fi
+    Elvish Erotic Novels
+    Self Help Books For Robots
+
+
+Here are the available actions
+search [genre]
+lookup [item_number]
+buy [item_number]
+
+What would you like to do? :  search sci-fi
+Dune By: Frank Herbert Genre: sci-fi Item num: 101 Quantity 20
+Foundation By: Issac Assimov Genre: sci-fi Item num: 102 Quantity 20
+The Origin of Species By: Some old Kook Genre: sci-fi Item num: 103 Quantity 20
+
+
+Here are the available actions
+search [genre]
+lookup [item_number]
+buy [item_number]
+
+What would you like to do? :  lookup 301
+Title: Finding the right gears Topic: Self Help Books For Robots Author: Automota Man Item num: 301 Quantity: 20
+
+
+Here are the available actions
+search [genre]
+lookup [item_number]
+buy [item_number]
+
+What would you like to do? :  buy 101
+Purchase Approved!!!!!!!!!
+Hope you enjoy Dune its one of our favorites
+
+Here are the available actions
+search [genre]
+lookup [item_number]
+buy [item_number]
+
+What would you like to do? :  

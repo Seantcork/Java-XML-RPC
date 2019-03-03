@@ -45,7 +45,6 @@ public class Catalog{
     */
 	public ArrayList<String> query_by_item(String item_num){
 		ArrayList<String> response = new ArrayList<String>();
-		System.out.println(item_num);
 		int num = Integer.parseInt(item_num);
 		Book book = Booklist.get(num);
 		if(book == null){
@@ -74,7 +73,7 @@ public class Catalog{
 	}
 
    /*
-    * Use: create bookstore adn fill it
+    * Use: create bookstore ann fill it
     */
 	public static void createBookstore(){
 		Booklist = new HashMap<Integer, Book>();
@@ -134,7 +133,6 @@ public class Catalog{
 	      phm.addHandler("Catalog", Catalog.class);
 	      xmlRpcServer.setHandlerMapping(phm);
 	      server.start();
-	      System.out.println("order server started");
 	      createBookstore();
 	      restock();
 	    } catch (Exception e) {

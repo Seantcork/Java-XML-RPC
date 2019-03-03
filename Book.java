@@ -1,4 +1,11 @@
+/*
 
+Book class that keeps track of books in our bookstore. Supports
+a constructor and a function that decrements the quantity of books available
+and a function that restocks the book in the bookstore.
+
+
+*/
 
 class Book {
 	public static final int restock_val = 10;
